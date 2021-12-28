@@ -1,0 +1,36 @@
+<div class="infobox clearfix"><div class="close"><img src="/template/properta/assets/img/close.png" alt=""></div><div class="image"><a href="/properties/property-detail" ><img src="/template/properta/assets/img/property/17.jpg" alt="677 Cottage Terrace" width="130px"></a><div class="contract-type">For sale</div></div><div class="info"><div class="title"><a href="/properties/property-detail">677 Cottage Terrace</a></div><div class="location">Spring Valley</div><div class="property-info clearfix"><div class="area"><i class="icon icon-normal-cursor-scale-up"></i>650m<sup>2</sup></div><div class="bedrooms"><i class="icon icon-normal-bed"></i>1</div><div class="bathrooms"><i class="icon icon-normal-shower"></i>1</div></div><div class="price">59,600 €</div><div class="link"><a href="/properties/property-detail">View more</a></div></div></div>
+
+
+
+
+   function initMap() {
+
+        var labels = 'Ýþaretçiler';
+        var haritaAyar = {
+            zoom: 5,
+            center: { lat: 39.925533, lng: 32.866287 }
+        };
+
+        var map = new google.maps.Map(document.getElementById('map'), haritaAyar);
+        var iconImage = '<img src="img/marker_1.png" />';
+
+        var infoWin = new google.maps.InfoWindow();
+
+        var markers = yerler.map(function (yerler, i) {
+            var marker = new google.maps.Marker({
+                position: { lat: yerler.LAT, lng: yerler.LNG },
+                animation: google.maps.Animation.DROP,
+                title: yerler.ILAN_BASLIGI,
+                icon: yerler.RESIM
+            });
+
+            google.maps.event.addListener(marker, 'click', function (evt) {
+                infoWin.setContent(yerler.ILAN_ICERIGI);
+                infoWin.open(map, marker)
+            })
+            return marker;
+        });
+
+        var markerCluster = new MarkerClusterer(map, markers,
+            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    }
