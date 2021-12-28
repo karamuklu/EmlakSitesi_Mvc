@@ -1,0 +1,102 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+@{ 
+    EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+
+    var One_Cikanlar = ent.TBLEMLAK.Where(i=>i.ONE_CIKAN==true).ToList();
+
+}
+
+
+<h2>Öne Çıkan İlanlar</h2>
+<div class="properties-grid featured">
+    <div class="row">
+        @foreach (var item in One_Cikanlar)
+        {
+            <div class="span3">
+                <div class="property">
+                    <div class="image">
+                        <div class="content">
+                            <a href="~/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                                <div class="description">
+                                    <p>
+                                        @if (item.ILAN_ICERIGI.Length > 50)
+                                        {
+                                            @item.ILAN_ICERIGI.Substring(0, 50)
+                                        }
+                                        else
+                                        {
+                                            @item.ILAN_ICERIGI
+                                        }
+                                    </p>
+                                </div>
+                                <img src=@item.TBLRESIM.Where(i=>i.EMLAK_ILAN_NO==item.ILAN_NO).FirstOrDefault().RESIM_YOLU alt="@item.TBLRESIM.Where(i => i.EMLAK_ILAN_NO == item.ILAN_NO).FirstOrDefault().ALT_ETIKETI">
+                            </a>
+                        </div>
+                        <!-- /.content -->
+                        @if (item.SATILIK_KIRALIK == 1)
+                        {
+                            <div class="rent-sale" style="background-color:#f69679">
+                                <span>Kiralık</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="rent-sale">
+                                <span>Satılık</span>
+                            </div>
+                        }
+
+                        <!-- /.rent-sale -->
+                        <div class="price">
+                            @string.Format("{0:C}", item.FIYAT)
+                        </div>
+                        <!-- /.price -->
+                    </div>
+                    <!-- /.image -->
+                    <div class="info">
+                        <div class="title clearfix">
+                            <h2>
+                                <a href="~/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                                    @if (item.ILAN_BASLIGI.Length > 25)
+                                    {
+                                        @item.ILAN_BASLIGI.Substring(0, 25)
+                                    }
+                                    else
+                                    {
+                                        @item.ILAN_BASLIGI
+                                    }
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- /.title -->
+                        <div class="location">@item.KONUMU </div>
+                        <!-- /.location -->
+                    </div>
+                    <!-- /.info -->
+                </div>
+                <!-- /.property -->
+                <div class="property-info clearfix">
+                    <div class="area">
+                        <i class="icon icon-normal-cursor-scale-up"></i>
+                        @item.M2 m<sup>2</sup>
+                    </div>
+                    <!-- /.area -->
+                    <div class="text-right">
+                        @item.ODA_SAYISI
+                    </div>
+                    <!-- /.bedrooms -->
+                    <!-- /.bathrooms -->
+                </div>
+                <!-- /.property-info -->
+            </div>
+                        <!-- /.span4 -->
+        }
+
+    </div>
+</div>
+<!-- /.properties-grid -->
+<div class="show-all">
+    <a href="~/Anasayfa/EmlakListesi">Hepsini Gör</a>
+</div>
+<hr>

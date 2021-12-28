@@ -1,0 +1,156 @@
+.page-template-page-submission-index-php {
+  h1 { text-align: center; }
+}
+
+.submissions-table {
+  thead { border-bottom: 1px solid $color-light-gray;
+    tr {
+      th { padding-left: 0;
+        &:last-child { display: none; }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &.sep { border-bottom: 1px solid $color-light-gray; }
+      td { border: none; vertical-align: middle; padding: 20px 0 0 0;
+        &.thumbnail{ border: none; box-shadow: none; }
+        &.actions { text-align: right;
+          a { color: $color-dark-gray; font-size: 12px; text-decoration: none;
+            &:hover { color: $color-link; }
+          }
+          .edit {  position: relative; margin-right: 10px; padding: 5px 30px 5px 10px; //@include white-button;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-secondary; content: "\e06e";  font-size: 20px; position: absolute; right: 5px; }
+            &:hover {
+              &:after { color: $color-primary; }
+            }
+          }
+          .remove {  position: relative; margin-right: 10px; padding: 5px 30px 5px 10px; //@include white-button;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-secondary; content: "\e04b";  font-size: 20px;  position: absolute; right: 5px; }
+            &:hover {
+              &:after { color: $color-primary; }
+            }
+          }
+          .view {  position: relative; margin-right: 10px; padding: 5px 30px 5px 10px; //@include white-button;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-secondary; content: "\e0f1";  font-size: 20px;  position: absolute; right: 5px; }
+            &:hover {
+              &:after { color: $color-primary; }
+            }
+          }
+          .unpublish { position: relative; padding: 5px 30px 5px 10px; //@include white-button;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-medium-gray; content: "\e132";  font-size: 20px;  position: absolute; right: 5px; }
+            &:hover {
+              &:after { color: $color-primary; }
+            }
+          }
+          .publish {  position: relative; padding: 5px 30px 5px 10px; //@include white-button;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-secondary; content: "\e12b";  font-size: 20px;  position: absolute; right: 5px; }
+            &:hover {
+              &:after { color: $color-primary; }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+a.add-submission { position: relative;
+  &.btn { @include white-button; width: auto; margin-bottom: 0; margin-top: 20px; padding: 10px 40px;
+    &:before { @include picto-pro; color: $color-secondary; content: "\e12d";  font-size: 30px; position: absolute; left: 5px; top: 5px; }
+  }
+}
+
+.progressbar { text-align: center; margin-top: 20px; margin-bottom: 30px;
+  .item {
+    .number { @include transition(0.2s); @include box-shadow(rgba(0,0,0,0.1) 0px 0px 0px 3px inset); border-radius: 50%; background-color: #fff; color: $color-primary; font-size: 24px; font-weight: bold; height: 70px; line-height: 70px; margin-left: 40%; margin-bottom: 10px; text-align: center; position: relative; width: 70px;
+      &:before { background-color: $color-light-gray; content: ""; display: block; height: 3px; position: absolute; width: 400px; top: 35px; z-index: -1; }
+      &.active { box-shadow: none; background-color: $color-secondary; color: #fff; }
+    }
+    &:last-child {
+      .number {
+        &:before { width: 0; }
+      }
+    }
+  }
+}
+
+.submission-form {
+  .featured-image {
+    padding: 5px; width: 100%; line-height: 32px; margin-bottom: 5px;
+  }
+  .button-wrapper {
+    text-align: center; width: 100%;
+  }
+  .ui-sortable {
+    .ui-sortable-helper {
+
+    }
+
+    margin: 0px; padding: 0px; list-style: none; width: 100%;
+
+    li {
+      float: left;
+      img {
+        float: left;
+      }
+      padding: 5px; padding-left: 0px; width: 100%; margin-bottom: 5px;
+      input {
+        float: left; line-height: 18px; padding-top: 5px;
+      }
+      .actions {
+        > div {
+          display: inline-block; float: right;
+        }
+        .remove {
+          background: url('../img/remove.png') top left no-repeat transparent; cursor: pointer; height: 16px; width: 16px;
+        }
+        .drag {
+          background: url('../img/drag.png') top left no-repeat transparent; cursor: pointer; height: 16px; width: 16px;
+        }
+      }
+
+      &.img-container {
+        .actions {
+          margin-top: 30px;
+        }
+      }
+    }
+
+  }
+
+  &.form-vertical {
+    .span4 { @include transition(0.2s); @include opacity(0.8); @include shadow; background-color: $color-light-gray; min-height: 710px; padding-bottom: 20px; padding-top: 20px; position: relative;
+      &:before { border: 15px solid transparent; border-width: 15px 15px; border-bottom-color: $color-light-gray; top: -30px; content: ""; display: block; height: 0px; left: 47%; margin-left: -4px; position: absolute; width: 0px; }
+      &.active { @include opacity(1); }
+    }
+    label { color: $color-dark-gray; font-weight: bold;
+      &.selectit { font-weight: normal; }
+    }
+    .control-group {
+      input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, .uneditable-input, #inputDate {
+        @include box-sizing(border-box); @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .2)); border: none; border-radius: 2px; display: inline-block; height: 30px; margin-bottom: 3px; margin-top: 5px; width: 100%;
+        &:focus { @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .4));  }
+        &:hover { @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .4));  }
+      }
+      @media (min-width: 1199px) {
+        padding-left: 20px; padding-right: 20px;
+        input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, .uneditable-input, #inputDate { height: 35px; margin-bottom: 5px; margin-top: 10px; }
+      }
+      .chzn-container { width: 100% !important;
+
+      }
+    }
+    ul.unstyled { margin-top: 10px;
+      li { margin-bottom: 15px; float: left; width: 50%; }
+    }
+    #description { min-height: 250px;}
+  }
+  .form-actions { border: none; background-color: transparent; margin: 0; margin-top: 30px; padding: 0; text-align: center;
+    .btn { @include primary-button; font-size: 18px; height: 50px; padding-left: 100px !important; padding-right: 100px !important; position: relative; width: auto; }
+  }
+
+  .input-append { width: 310px;
+    .add-on { border: none; background-color: transparent; margin-top: 12px; padding-left: 10px; text-shadow: none;  }
+  }
+}

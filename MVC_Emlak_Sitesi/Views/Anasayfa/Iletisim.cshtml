@@ -1,0 +1,264 @@
+﻿@using MVC_Emlak_Sitesi.Models
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div id="main" class="span9">
+            <article class="clearfix page type-page">
+                <header class="entry-header">
+                    <h1 class="page-header entry-title">
+                        İletişim
+                    </h1>
+                    <hr />
+                </header>
+                <!-- .entry-header -->
+
+                <div class="entry-content">
+                    <p>
+                        Bizimle iletişime geçebilirsiniz. Emlaklarınızın satılmasında ve kiralanmasında size yardımcı olmaya hazırız...
+                    </p>
+
+                    <p>
+                        <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.252365833275!2d29.101436715308836!3d40.97595442936236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac64886effeab%3A0x17becde998b6c3c6!2zxLDDp2VyZW5rw7Z5IE1haGFsbGVzaSwgU2HEn2zEsWsgU2suIDQtMSwgMzQ3NTIgQXRhxZ9laGlyL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1518698131461" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </p>
+
+                    <h2>Bize Mesaj Gönderin</h2>
+
+                    <div class="contact-form">
+                        <form action="~/Anasayfa/EmlakFiltrele" method="post" class="contact-form">
+
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="span4">
+                                        <label>İsminiz</label><span class="your-name"><input type="text" name="your-name" value="" size="40"></span>
+                                    </div>
+                                    <div class="span4">
+                                        <label>E-mail</label><span class="your-email"><input type="email" name="your-email" value="" size="40"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="controls">
+                                <label>Mesajınız</label><span class="your-message"><textarea name="your-message" cols="40" rows="10" class="span7"></textarea></span>
+                            </div>
+
+                            <div class="controls">
+                                <button id="contact-submit" type="submit" class="btn btn-primary input-medium">
+                                    Gönder
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <!-- .entry-content -->
+            </article>
+            <!-- /#post -->
+
+
+        </div>
+        <!-- /#main -->
+
+        <div class="sidebar span3">
+            <h2>Search Properties</h2>
+
+            <div class="property-filter widget">
+                <div class="content">
+
+                    @using (Html.BeginForm("EmlakFiltrele", "Anasayfa", FormMethod.Post)) //farkla controller'larda formu çalıştırmak için bunu yazdık
+                    {
+                        <div class="location control-group">
+                            <label class="control-label">
+                                Konumu
+                            </label>
+                            @Html.DropDownList("ilan_No", null, "Konum", new { @class = "form-control" })
+                        </div>
+                        <div class="type control-group">
+                            <label class="control-label">
+                                Emlak Tipi
+                            </label>
+
+                            <div class="controls">
+                                @Html.DropDownList("emlak_tipi", new List<SelectListItem> {
+                                                                                 new SelectListItem { Text="Apartman Dairesi", Value="1"},
+                                                                                 new SelectListItem { Text="Müstakil Ev", Value="2"},
+                                                                                 new SelectListItem { Text="Çiftlik Evi", Value="3"},
+                                                                                 new SelectListItem { Text="Villa", Value="4"},
+                                                                                 new SelectListItem { Text="Fabrika", Value="5"},
+                                                                                 new SelectListItem { Text="Bekar Evi", Value="6"}
+                                                                                 }, "Seçiniz", new { @class = "form-control" })
+
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+
+                        <div class="rent control-group">
+                            <div class="controls" style="padding-left:18px">
+                                <label class="radio">
+                                    @Html.RadioButton("kiralik", true)
+                                    Kiralık
+                                </label>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="sale control-group">
+                            <div class="controls">
+                                <label class="radio">
+                                    @Html.RadioButton("satilik", false)
+                                    Satılık
+                                </label>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="price-from control-group">
+                            <label class="control-label">
+                                Bu Fiyattan
+                            </label>
+
+                            <div class="controls">
+                                @Html.TextBox("ilkFiyat", null, new { @class = "form-control",@text=0 })
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="price-to control-group">
+                            <label class="control-label">
+                                Bu Fiyata
+                            </label>
+                            <div class="controls">
+                                @Html.TextBox("sonFiyat", null, new { @class = "form-control" })
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="area-from control-group">
+                            <label class="control-label">
+                                Bu m<sup>2</sup>'den
+                            </label>
+
+                            <div class="controls">
+                                @Html.TextBox("ilkmk", null, new { @class = "form-control" })
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="area-to control-group">
+                            <label class="control-label">
+                                Bu  m<sup>2</sup>'ye
+                            </label>
+
+                            <div class="controls">
+                                @Html.TextBox("sonmk", null, new { @class = "form-control" })
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large" name="btnFiltrele" id="btnFiltrele">Filtrele!</button>
+                        </div>
+                        <!-- /.form-actions -->
+                    }
+                </div>
+                <!-- /.content -->
+            </div><!-- /.property-filter -->
+            <div id="partners_widget-2" class="widget partners">
+
+                <h2>Partners</h2>
+
+                <div class="partners">
+                    <div class="row">
+                        <div class="span3">
+                            <div class="partner">
+                                <a href="http://www.themeforest.net">
+                                    <img width="270" height="70" src="/template/properta/assets/img/partners/themeforest.png" class="thumbnail-image" alt="themeforest">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.span3 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.partners -->
+            </div>
+
+            <h2>Son Eklenen İlanlar</h2>
+            @Html.Partial("_SonEklenenler_Detay")
+
+
+
+            <div id="agencies_widget-2" class="widget agencies">
+                <h2>Emlakçılarımız</h2>
+                <div class="content">
+                    @{
+                        EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+                        var sorumlular = ent.TBLSORUMLU.ToList();
+                    }
+
+                    @foreach (var item in sorumlular)
+                    {
+                        <div class="agency clearfix">
+                            <div class="header">
+                                <div class="image">
+                                    <a href="/Anasayfa/EmlakciDetay/@item.ID">
+                                        <img src="@item.RESIM" alt="@item.ADI @item.SOYADI">
+                                    </a>
+                                </div>
+                                <!-- /.image -->
+                                <div class="info">
+                                    <a href="/Anasayfa/EmlakciDetay/@item.ID"><h2>@item.ADI @item.SOYADI</h2></a>
+                                    <div class="properties-count">
+                                        <span class="number">@item.TBLEMLAK.Count()</span> ilan
+                                    </div>
+                                    <!-- /.properties-count -->
+                                    <a href="~/Anasayfa/EmlakciDetay/@item.ID " class="btn">Profili Gör</a>
+                                </div>
+                                <!-- /.info -->
+                            </div>
+                            <!-- /.header -->
+                            <div class="address">
+                                Adres<br />
+                                Adres 2
+                            </div>
+                            <!-- /.address -->
+                            <div class="email">
+                                <a href="mailto:@item.EMAIL">@item.EMAIL</a>
+                            </div>
+                            <!-- /.email -->
+                            <div class="phone">
+                                @item.TEL_NO
+                            </div>
+                            <!-- /.phone -->
+                        </div>
+                        <!-- /.agency -->
+                    }
+                </div>
+                <!-- /.content -->
+            </div>
+        </div>
+        <!-- /#sidebar -->
+
+    </div>
+    <!-- /.row -->
+</div>
+<script>
+    $('input[name=btnFiltrele]').click(function (e) {
+        if ($('#ilkFiyat').val() == "" || $('#sonFiyat').val() == "" || $('#sonFiyat').val() == "" || $('#sonFiyat').val() == "") {
+            e.preventDefault();
+            alert('Lütfen değer giriniz');
+        }
+    });
+</script>

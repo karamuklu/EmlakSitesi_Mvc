@@ -1,0 +1,191 @@
+﻿
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="tr-TR">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mustafa KARAMUKLU">
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
+
+    <!--[if lt IE 9]>
+    <script src="/template/properta/assets/js/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <meta name='robots' content='noindex,nofollow' />
+
+    <link rel='stylesheet' id='font-css'
+          href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700%2C300&#038;subset=latin%2Clatin-ext&#038;ver=3.6'
+          type='text/css' media='all' />
+    <link rel='stylesheet' id='revolution-fullwidth' href='~/properta/assets/libraries/rs-plugin/css/fullwidth.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='revolution-settings' href='~/properta/assets/libraries/rs-plugin/css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css' href='~/properta/assets/libraries/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-responsive-css' href='~/properta/assets/libraries/bootstrap/css/bootstrap-responsive.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='pictopro-normal-css' href='~/properta/assets/icons/pictopro-normal/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='justvector-web-font-css' href='~/properta/assets/icons/justvector-web-font/stylesheet.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='chosen-css' href='~/properta/assets/libraries/chosen/chosen.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='aviators-css' href='~/properta/assets/css/jquery.bxslider.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='properta-css' href='~/properta/assets/css/properta.css' type='text/css' media='all' />
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/aviators-settings.js'></script>
+    <script type='text/javascript' src='~/properta/assets/libraries/chosen/chosen.jquery.min.js'></script>
+    <script type='text/javascript' src='~/properta/assets/libraries/rs-plugin/js/jquery.themepunch.revolution.min.js'></script>
+    <script type='text/javascript' src='~/properta/assets/libraries/rs-plugin/js/jquery.themepunch.plugins.min.js'></script>
+
+    <title>MKA | Emlakçınız Burada</title>
+</head>
+
+<body class="home page page-template">
+    <div class="top">
+        <div class="container">
+            <div class="top-inner inverted">
+                <div class="header clearfix">
+                    <div class="branding pull-left">
+                        <div class="logo">
+                            <a href="~/Anasayfa/Index" title="Home">
+                                <img src="~/properta/assets/img/logo.png" alt="Home">
+                            </a>
+                        </div>
+                        <!-- /.logo -->
+
+                        <div class="site-name">
+                            <a href="~/Anasayfa/Index" title="Home" class="brand">
+                                Yeni Nesil Emlak Sitesi
+                            </a>
+                        </div>
+                        <!-- /.site-name -->
+                    </div>
+
+                    <div class="contact-top">
+                        <ul class="menu nav">
+                            <li class="first leaf facebook"><a href="http://www.facebook.com" class="facebook"><i>F</i></a></li>
+                            <li class="leaf flickr"><a href="http://www.flickr.com" class="flickr"><i>n</i></a></li>
+                            <li class="leaf google-plus"><a href="http://plus.google.com" class="google"><i>g</i></a></li>
+                            <li class="leaf linkedin"><a href="http://linkedin.com" class="linkedin"><i>l</i></a></li>
+                            <li class="leaf twitter"><a href="http://www.twitter.com" class="twitter"><i>T</i></a></li>
+                            <li class="last leaf vimeo"><a href="http://vimeo.com" class="vimeo"><i>v</i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="user-area pull-right">
+                        <div class="menu-anonymous-container">
+                            <ul id="menu-anonymous" class="nav nav-pills">
+                                <li class="menu-item"><a href="~/properta/register">Register</a></li>
+                                <li class="menu-item">
+
+                                    @if (Session["Kullanıcı"] != null)
+                                    {
+                                        <a href="/Emlak/Index">
+                                           @Session["Kullanıcı"].ToString()
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Login/Login">
+                                            Giriş Yap
+                                        </a>
+                                    }
+
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.user-area -->
+                </div>
+                <!-- /.header -->
+                <div class="navigation navbar clearfix">
+                    <div class="pull-left">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="nav-collapse collapse">
+                            <ul id="menu-main" class="nav">
+                                
+
+                                <li class="menu-item menu-item-parent">
+                                    <a href="~/Anasayfa/EmlakListesi">Emlak Listesi</a>
+
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="~/Anasayfa/EmlakListesi">Properties listing</a></li>
+                                        <li class="menu-item"><a href="~/properta/properties/property-detail">Property detail</a></li>
+
+                                        <li class="menu-item"><a href="~/properta/agencies">Agencies listing</a></li>
+                                        <li class="menu-item"><a href="~/properta/agencies/agency-detail">Agencies detail</a></li>
+
+                                        <li class="menu-item"><a href="~/properta/agents">Agents listing</a></li>
+                                        <li class="menu-item"><a href="~/properta/agents/agent-detail">Agent detail</a></li>
+
+                                        <li class="menu-item"><a href="~/properta/register">Register</a></li>
+                                        <li class="menu-item"><a href="~/properta/login">Login</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item menu-item-parent">
+                                    <a href="#">Alt Sayfalar</a>
+                                    <ul class="sub-menu">
+                                       @* <li class="menu-item"><a href="~/properta/404">404 page</a></li>*@
+                                        <li class="menu-item"><a href="~/Anasayfa/CokSorulanlar">Sık Sorulan Sorular</a></li>
+                                        @*<li class="menu-item"><a href="~/properta/pricing">Pricing</a></li>*@
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="~/Anasayfa/iletisim">İletişim</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+                        <div class="list-property">
+                            <a href="/submissions">
+                                List your property<div class="ribbon"><span class="icon icon-normal-circle-plus"></span></div>
+                            </a>
+                        </div>
+                        <!-- /.list-property -->
+                    </div>
+                    <!-- /.pull-right -->
+                </div>
+
+                <div class="breadcrumb pull-left">
+                    <!-- Breadcrumb NavXT 4.4.0 -->
+                    <a title="Go to Properta." href="~/properta/" class="home">Properta</a> &gt; Page
+                </div>
+
+                <!-- /.breadcrumb -->
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    @Html.Partial("Footer")
+    <script type='text/javascript' src="~/properta/assets/js/accounting.min.js"></script>
+    <script type='text/javascript' src='~/properta/assets/js/aviators-map.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/retina.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/gmap3.clusterer.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/jquery.ezmark.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/carousel.js'></script>
+    <script type='text/javascript' src='~/properta/assets/js/jquery.bxslider.js'></script>
+    @*
+        <script type='text/javascript' src='~/properta/assets/js/properta.js'></script>*@
+    <script type='text/javascript' src='~/properta/assets/js/jquery.bxslider.min.js'></script>
+
+</body>
+
+</html>

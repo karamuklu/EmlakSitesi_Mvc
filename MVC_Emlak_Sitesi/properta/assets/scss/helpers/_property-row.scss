@@ -1,0 +1,90 @@
+body {
+   &.post-type-archive-property {
+     h1.page-header { margin-bottom: 10px; float: left; clear: both; }
+   }
+ }
+.properties-rows {
+  .property { background-color: transparent; border-bottom: 1px solid $color-light-gray; box-shadow: none; padding-bottom: 20px; margin-bottom: 20px;
+    .image { width: auto; margin: 0; position: relative;
+      div { background-color: $color-primary; }
+      img { @include transition(0.2s); margin: 0; width: 100%; }
+      &:hover {
+        img { @include opacity(.8); }
+      }
+    }
+    .body { postition: relative;
+      .title {
+        h2 { font-size: 24px; font-weight: bold; margin-top: 0px; margin-bottom: 0px;
+          a { color: $color-primary }
+        }
+      }
+      .location { margin-bottom: 10px; }
+      .price { @include shadow; color: $color-primary; background-color: $color-light-gray; border-radius: 2px; display: inline; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; left: 300px; top: 60px; position: absolute; }
+      .property-info { box-shadow: none; background-color: transparent; font-size: 12px; padding: 0px;
+        .icon { color: $color-secondary; margin-left: 0; padding-top: 1px; }
+        .area, .bathrooms, .bedrooms { float: left; margin-right: 15px; }
+        .more-info { float: right;
+          a { color: $color-link; text-decoration: none;
+            &:hover {
+              .icon { color: $color-primary; }
+            }
+          }
+          .icon { @include transition(0.2s); color: $color-medium-gray; font-size: 24px; margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.filter-wrapper { float: right;
+.filter { margin-top: 5px;
+  form  { display: block; float: left; margin-bottom: 0px;
+    .control-group { margin-bottom: 0px;
+      .controls { margin-left: 0px;
+      }
+    }
+  }
+  .chzn-container { margin-left: 20px; width: 130px !important; }
+  .pager {  margin: 0 0 0 10px; float: right;
+    ul {   vertical-align: middle; text-align: center;
+      li { display: inline-block;
+        a { @include transition(0.2s); }
+        a:hover { background-color: $color-light-gray; }
+        .icon { color: $color-primary; font-size: 20px; line-height: 26px; margin-right: 5px; }
+        .pager-left { border-bottom-right-radius: 0px; border-bottom-left-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 0px; margin-right: -5px; }
+        .pager-right { border-bottom-right-radius: 3px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 3px; }
+      }
+    }
+  }
+  .pager li > a, .pager li > span { @include shadow; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; padding: 0px 0px; height: 34px; width: 35px; margin: 0;
+
+  }
+
+  .show-matrix, .show-rows, { @include shadow; @include transition(0.2s); border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; color: $color-medium-gray; display: block; font-size: 24px; height: 34px; width: 34px; text-align: center; margin-left: 25px;
+    .icon { line-height: 30px; margin-left: -9px; }
+    &:hover { background-color: $color-light-gray; color: $color-primary; }
+  }
+  .show-rows, { margin-left: 5px; }
+}
+}
+
+@media (min-width: 1199px) {
+  .properties-rows {
+    .property { background-color: transparent; box-shadow: none;
+      //img { margin: 0; width: auto; }
+      .body { postition: relative;
+        .title {
+          h2 { font-size: 24px; font-weight: bold; margin-top: 5px; margin-bottom: 0px;
+            a { color: $color-primary }
+          }
+        }
+        .location { margin-bottom: 55px; }
+        .price {  font-size: 18px; padding: 6px 10px 6px 10px; }
+        .property-info { font-size: 14px; }
+      }
+    }
+  }
+}
+
+

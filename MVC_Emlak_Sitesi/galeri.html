@@ -1,0 +1,213 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--HTML Kodlarıyla Jquery Resim Galerisi by www.MeftunMede.com-->
+    <style type='text/css'>
+        #broder {
+            width: 580px;
+            height: 440px;
+            background: #333;
+            border: 3px solid #666;
+            position: relative;
+            margin: 30px auto 20px;
+        }
+
+        #slide {
+            width: 480px;
+            height: 360px;
+            overflow: hidden;
+            position: absolute;
+            left: 49px;
+            top: 29px;
+            background: #fff;
+            border: 0px solid #698639;
+            border-color: #698639 #e0ebcb #e0ebcb #698639;
+        }
+
+            #slide a {
+                width: 480px;
+                height: 360px;
+                text-decoration: none;
+                display: block;
+                position: absolute;
+                left: 480px;
+            }
+
+                #slide a img {
+                    display: block;
+                    border: 0;
+                }
+
+        #title {
+            width: 131px;
+            height: 132px;
+            position: absolute;
+            left: 5px;
+            top: -30px;
+        }
+
+        #previous {
+            width: 74px;
+            height: 74px;
+            background: url(http://3.bp.blogspot.com/-D8Wh9oESVZU/UT6DZnGDhTI/AAAAAAAAAO4/JFdM3FPMlx0/s1600/slide-left.png);
+            position: absolute;
+            left: 5px;
+            top: 175px;
+            cursor: pointer;
+        }
+
+        #next {
+            width: 74px;
+            height: 74px;
+            background: url(http://1.bp.blogspot.com/-GSe_iHczPNU/UT6DZoeztoI/AAAAAAAAAO8/sz6NoI9k7pM/s1600/slide-right.png);
+            position: absolute;
+            left: 510px;
+            top: 175px;
+            cursor: pointer;
+        }
+
+        #buttons {
+            position: absolute;
+            left: 50px;
+            top: 405px;
+        }
+
+            #buttons div {
+                width: 20px;
+                height: 20px;
+                background: url(http://2.bp.blogspot.com/-ikc4jpWK_K0/UT6DZlP3JMI/AAAAAAAAAPM/FX16BtoXwdQ/s1600/slide-button.gif);
+                float: left;
+                margin-right: 5px;
+                display: inline;
+            }
+
+                #buttons div b {
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 19px;
+                    font-family: arial, sans-serif;
+                    font-size: 11px;
+                    color: #16a;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+        img#loading {
+            position: absolute;
+            left: 240px;
+            top: 170px;
+        }
+
+        #previous b, #next b {
+            display: none;
+        }
+    </style>
+    <script src="http://meftunmede.github.io/javascripts/jquery-slider.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            current = 1;
+            button = 1;
+            images = 8; // Slaytda gösterilecek resim sayısı
+            width = 480; // Slaytdaki resimlerin genişlik değeri (px)
+            $('#p1').animate({ "left": "0px" }, 400, "swing");
+            $('#b1').css("backgroundPosition", "left bottom")
+            $('#b1 b').css("color", "#fff");
+            $("#next").click(function () {
+                button = current;
+                current++
+                if (current == (images + 1)) { current = 1 }
+                animateLeft(current, button)
+            });
+            $("#previous").click(function () {
+                button = current;
+                current--
+                if (current == 0) { current = images }
+                animateRight(current, button)
+            });
+            $("#buttons div").click(function () {
+                button = current;
+                clickButton = $(this).attr('id');
+                current = parseInt(clickButton.slice(1));
+                if (current > button) { animateLeft(current, button) }
+                if (current < button) { animateRight(current, button) }
+            });
+            $("#buttons div b").mouseover(function () {
+                if (($(this).css("color")) == "#16a" || ($(this).css("color")) == "rgb(17, 102, 170)") { $(this).css("color", "#000"); }
+            });
+            $("#buttons div b").mouseout(function () {
+                if (($(this).css("color")) == "#000" || ($(this).css("color")) == "rgb(0, 0, 0)") { $(this).css("color", "#16a"); }
+            });
+            function animateLeft(current, button) {
+                $('#p' + current).css("left", width + "px");
+                $('#p' + current).animate({ "left": "0px" }, 400, "swing");
+                $('#p' + button).animate({ "left": -width + "px" }, 400, "swing");
+                setbutton()
+            }
+            function animateRight(current, button) {
+                $('#p' + current).css("left", -width + "px");
+                $('#p' + current).animate({ "left": "0px" }, 400, "swing");
+                $('#p' + button).animate({ "left": width + "px" }, 400, "swing");
+                setbutton()
+            }
+            function setbutton() {
+                $('#b' + button).css("backgroundPosition", "left top")
+                $('#b' + button + ' b').css("color", "#16a");
+                $('#b' + current).css("backgroundPosition", "left bottom")
+                $('#b' + current + ' b').css("color", "#fff");
+            }
+        });
+    </script>
+    <div id="broder">
+        <div id="slide">
+            <img alt="loading" id="loading" src="http://2.bp.blogspot.com/-BLReN523CAY/UT6Mlea2VhI/AAAAAAAAAQg/PVNrzTjOz5A/s1600/loading.gif" />
+            <a href="http://2.bp.blogspot.com/-5g8rAHFtJ50/UT6GuRXH9BI/AAAAAAAAAP4/e2JbE_c-Cww/s1600/ol.jpg" id="p1"><img height="360" src="http://2.bp.blogspot.com/-5g8rAHFtJ50/UT6GuRXH9BI/AAAAAAAAAP4/e2JbE_c-Cww/s1600/ol.jpg" width="480" alt="Meftun Apart Front" title="Meftun Apart Front" /></a>
+            <a href="http://2.bp.blogspot.com/-7e_AvvQHFo4/UT6GtfTuhAI/AAAAAAAAAPk/zM2Ky2Vee9Q/s1600/havuz.jpg" id="p2"><img height="360" src="http://2.bp.blogspot.com/-7e_AvvQHFo4/UT6GtfTuhAI/AAAAAAAAAPk/zM2Ky2Vee9Q/s1600/havuz.jpg" width="480" alt="Meftun Apart Havuz" title="Meftun Apart havuz" /></a>
+            <a href="http://3.bp.blogspot.com/-moaU1JxkTEA/UT6GupkSlvI/AAAAAAAAAP8/yStk0s-XiaY/s1600/salon.jpg" id="p3"><img height="360" src="http://3.bp.blogspot.com/-moaU1JxkTEA/UT6GupkSlvI/AAAAAAAAAP8/yStk0s-XiaY/s1600/salon.jpg" width="480" alt="Meftun Apart Salon" title="Meftun Apart Salon" /></a>
+            <a href="http://3.bp.blogspot.com/-V0Z7Pob9TIk/UT6GsoGChQI/AAAAAAAAAPg/Oe_5psvMv-E/s1600/balkon.jpg" id="p4"><img height="360" src="http://3.bp.blogspot.com/-V0Z7Pob9TIk/UT6GsoGChQI/AAAAAAAAAPg/Oe_5psvMv-E/s1600/balkon.jpg" width="480" alt="Meftun Apart Balkon" title="Meftun Apart Balkon" /></a>
+            <a href="http://3.bp.blogspot.com/-mTbbTk1cRPY/UT6Gt6mmq-I/AAAAAAAAAPo/nR3ZOKzMUb4/s1600/meftun_aparts9b.jpg" id="p5"><img height="360" src="http://3.bp.blogspot.com/-mTbbTk1cRPY/UT6Gt6mmq-I/AAAAAAAAAPo/nR3ZOKzMUb4/s1600/meftun_aparts9b.jpg" width="480" alt="Meftun Apart Açık mutfak" title="Meftun Apart Açık Mutfak" /></a>
+            <a href="http://4.bp.blogspot.com/-ieL4Vk-LuQ8/UT6GtvdwliI/AAAAAAAAAPs/Ez-nmeF6a8k/s1600/meftun_aparts10b.jpg" id="p6"><img height="360" src="http://4.bp.blogspot.com/-ieL4Vk-LuQ8/UT6GtvdwliI/AAAAAAAAAPs/Ez-nmeF6a8k/s1600/meftun_aparts10b.jpg" width="480" alt="Meftun Apart Yatak odası-1" title="Meftun Apart Yatak odası-1" /></a>
+            <a href="http://3.bp.blogspot.com/-5n-kzVVG_AI/UT6GsmswUDI/AAAAAAAAAPY/RwVjKqA2NKk/s1600/5.JPG" id="p7"><img height="360" src="http://3.bp.blogspot.com/-5n-kzVVG_AI/UT6GsmswUDI/AAAAAAAAAPY/RwVjKqA2NKk/s1600/5.JPG" width="480" alt="Meftun Apart Yatak odası-2" title="Meftun Apart Yatak odası-2" /></a>
+            <a href="http://3.bp.blogspot.com/-FnTnXHzM44g/UT6Gsr6amOI/AAAAAAAAAPc/WGGmh6X-gOQ/s1600/7.JPG" id="p8"><img height="360" src="http://3.bp.blogspot.com/-FnTnXHzM44g/UT6Gsr6amOI/AAAAAAAAAPc/WGGmh6X-gOQ/s1600/7.JPG" width="480" alt="Meftun Apart WC&Banyo" title="Meftun Apart WC&Banyo" /></a>
+        </div>
+        <div id="previous">
+            <b>Önceki</b>
+        </div>
+        <div id="next">
+            <b>Sonraki</b>
+        </div>
+        <div id="buttons">
+            <div id="b1">
+                <b>1</b>
+            </div>
+            <div id="b2">
+                <b>2</b>
+            </div>
+            <div id="b3">
+                <b>3</b>
+            </div>
+            <div id="b4">
+                <b>4</b>
+            </div>
+            <div id="b5">
+                <b>5</b>
+            </div>
+            <div id="b6">
+                <b>6</b>
+            </div>
+            <div id="b7">
+                <b>7</b>
+            </div>
+            <div id="b8">
+                <b>8</b>
+            </div>
+        </div>
+    </div>
+    <!--HTML Kodlarıyla Jquery Resim Galerisi by www.MeftunMede.com-->
+</body>
+</html>

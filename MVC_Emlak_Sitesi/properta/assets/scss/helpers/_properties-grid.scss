@@ -1,0 +1,132 @@
+.properties-grid { clear: both;
+  .property { margin-top: 10px; padding: 0;
+    .image { margin: 0; margin-bottom: 0px; width: 100%; position: relative;
+			img { display: block; width: 100%; }
+      .reduced, .rent-sale, .price  { @include shadow; border-radius: 2px; display: inline; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; position: absolute; }
+      .reduced { @include text-shadow(0px 1px 1px rgba(0,0,0,0.2)); color: #fff; background-color: $color-secondary; left: 10px; top: -5px;
+				@media (min-width: 768px) and (max-width: 979px) {
+					font-size: 10px;
+				}
+			}
+
+      .rent-sale { color: #fff; background-color: $color-primary; right: 10px; top: -5px;
+				@media (min-width: 768px) and (max-width: 979px) {
+					font-size: 10px;
+				}
+			}
+      .price { color: $color-dark-gray; background-color: #fff; bottom: -5px; right: 10px;
+				@media (min-width: 768px) and (max-width: 979px) {
+					font-size: 10px;
+				}
+			}
+      .content {
+        .description { @include transition(0.2s); @include opacity(0); position: absolute; top: 0px; height: 100%; overflow: hidden; width: 100%;
+          p { font-size: 11px; color: #fff; line-height: 12px; padding: 30px 15px 15px 15px; margin-bottom: 0px; text-overflow: ellipsis; overflow:hidden;
+						@media (min-width: 768px) and (max-width: 979px) {
+							padding: 15px 10px;
+						}
+						@media (max-width: 767px) {
+							font-size: 14px; line-height: 18px;
+						}
+					}
+          &:hover { @include primary-color-opacity($color-primary, 0.9); @include opacity(1); }
+        }
+      }
+    }
+
+    .info { @include transition(0.8s); overflow: hidden; width: 95%; clear: both; max-height: 60px;
+      &:hover { max-height: 100px;
+        .title {
+          h2 {
+            a { white-space: normal;
+            }
+          }
+        }
+        .location { white-space: normal; }
+      }
+      .title {
+        h2 { font-size: 14px; font-weight: bold;  line-height: 1; margin-left: 10px; margin-bottom: 0; margin-top: 10px; padding-top: 0px;
+          a { color: $color-primary; white-space: nowrap; }
+
+					@media (min-width: 768px) and (max-width: 979px) {
+						font-size: 11px;
+					}
+        }
+      }
+      .location { color: $color-dark-gray; font-size: 12px; margin: 0 10px 0px 10px; padding-bottom: 8px; white-space: nowrap;
+				@media (min-width: 768px) and (max-width: 979px) {
+					font-size: 10px;
+				}
+			}
+    }
+  }
+  .row {
+    .property {  @include transition(0.8s);
+      .info { @include transition(0.8s); overflow: hidden; width: 95%; clear: both; max-height: 70px;
+        &:hover { max-height: 100px;
+          .title {
+            h2 {
+              a { white-space: normal;
+              }
+            }
+          }
+          .location { white-space: normal; }
+        }
+      }
+      .image { margin-bottom: 0px;
+        .content {
+          .description {
+            p { height: auto; }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1199px) {
+    .property {
+      .image {
+        .price { font-size: 14px; font-weight: bold; padding: 6px 10px 6px 10px; }
+        .content {
+          .description { width: 100%;
+            p { font-size: 12px; height: 65px; line-height: 14px; padding: 30px 20px 20px 20px; }
+          }
+        }
+      }
+    }
+    .row {
+      .property {
+        .title {
+          h2 {
+            a { font-size: 18px; white-space: nowrap; }
+          }
+        }
+        .image {
+          .content {
+            .description {
+              p { font-size: 14px; height: 120px; line-height: 20px; padding: 30px 20px 20px 20px; }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.featured {
+    .row {
+      .property { background-color: $color-primary;
+        .title {
+          h2 {
+            a { color: #fff; }
+          }
+        }
+        .location { color: #fff; }
+      }
+      .property-info {
+        .area, .bathrooms, .bedrooms {
+          .icon { color: $color-secondary; }
+        }
+      }
+    }
+  }
+}

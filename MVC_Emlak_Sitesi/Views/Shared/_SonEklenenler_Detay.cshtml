@@ -1,0 +1,52 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+@{
+    EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+    var geriTarih = DateTime.Now.AddDays(-30);
+    var Son_Eklenenler = ent.TBLEMLAK.Where(i => i.ILAN_TARIHI < DateTime.Now && i.ILAN_TARIHI > geriTarih).ToList().Take(3);
+}
+
+
+@foreach (var item in Son_Eklenenler)
+{
+    <div class="property clearfix">
+        <div class="image">
+            <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                <img width="570" height="425" src="@item.TBLRESIM.Where(i=>i.EMLAK_ILAN_NO==item.ILAN_NO).FirstOrDefault().RESIM_YOLU"
+                     class="thumbnail-image " alt="@item.TBLRESIM.Where(i=>i.EMLAK_ILAN_NO==item.ILAN_NO).FirstOrDefault().ALT_ETIKETI" />
+            </a>
+        </div>
+        <!-- /.image -->
+        <div class="wrapper">
+            <div class="title">
+                <h3>
+                    <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                        @item.ILAN_BASLIGI
+                    </a>
+                </h3>
+            </div>
+            <!-- /.title -->
+            <div class="location">@item.KONUMU</div>
+            <!-- /.location -->
+            <div class="price">
+                @string.Format("{0:C}", item.FIYAT)
+            </div>
+            <!-- /.price -->
+        </div>
+        <!-- /.wrapper -->
+    </div>
+<!-- /.property -->
+<div class="property-info clearfix">
+    <div class="area">
+        <i class="icon icon-normal-cursor-scale-up" style="color:#f69679"></i>
+        @item.M2 m<sup>2</sup>
+    </div>
+    <!-- /.area -->
+    <div class="text-right">
+        @item.ODA_SAYISI
+    </div>
+    <!-- /.bedrooms -->
+</div>
+<!-- /.info -->
+
+}

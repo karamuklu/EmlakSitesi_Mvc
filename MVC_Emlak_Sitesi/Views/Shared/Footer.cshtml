@@ -1,0 +1,131 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+
+@{
+    EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+
+    var Son_Eklenenler = ent.TBLEMLAK.ToList();
+    var sorumlular = ent.TBLSORUMLU.ToList();
+    var fiyati_Dusenler = ent.TBLEMLAK.Where(i => i.FIYATI_DUSEN == true).ToList();
+}
+
+<div id="footer-wrapper" style="background-color:#003f4f">
+    <div id="footer-top">
+        <div id="footer-top-inner" class="container">
+            <div class="row">
+                <div class="span3">
+                    <div id="mostrecentproperties_widget-3" class="widget properties">
+                        <h2>En Yeni İlanlar</h2>
+                        <div class="content">
+
+                            @Html.Partial("_SonEklenenler_Detay")
+
+                            <!-- /.content -->
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div id="nav_menu-2" class="widget widget-nav_menu">
+                        <h2>Faydalı Linkler</h2>
+                        <div class="menu-helpful-links-container">
+                            <ul id="menu-helpful-links" class="menu">
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/templates/default-left" style="color:white">Default Template</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/templates/default-right" style="color:white">Right Sidebar Template</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/templates/default-full" style="color:white">Fullwidth Template</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/properties" style="color:white">Properties Grid Template</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/faq" style="color:white">FAQ</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/404" style="color:white">404 page</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/login" style="color:white">Login Template</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="http://preview.byaviators.com/template/properta/register" style="color:white">Register Template</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div id="agents_widget-2" class="widget our-agents">
+                        <h2>Danışmanlarımız</h2>
+                        <div class="content">
+                            @foreach (var item in sorumlular)
+                            {
+                                <div class="agent clearfix">
+                                    <div class="image">
+                                        <a href="/Anasayfa/EmlakciDetay/@item.ID">
+                                            <img src="@item.RESIM" alt="@item.ADI @item.SOYADI">
+                                        </a>
+                                    </div>
+                                    <!-- /.image -->
+                                    <div class="name">
+                                        <a href="/Anasayfa/EmlakciDetay/@item.ID">@item.ADI @item.SOYADI</a>
+                                    </div>
+                                    <!-- /.name -->
+                                    <div class="phone">
+                                        <i class="icon icon-normal-phone"></i>
+                                        @item.TEL_NO
+                                    </div>
+                                    <!-- /.phone -->
+                                    <div class="email">
+                                        <i class="icon icon-normal-mail"></i>
+                                        <a href="mailto:@item.EMAIL">@item.EMAIL</a>
+                                    </div>
+                                    <!-- /.email -->
+                                </div>
+                                <!-- /.agent -->
+
+                            }
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                </div>
+                <div class="span3">
+                    <div id="featuredproperties_widget-2" class="widget properties">
+                        <h2>Fiyatı Düşenler</h2>
+                        <div class="content">
+                          
+                            @Html.Partial("_Fiyati_Dusenler_Detay")
+
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#footer-top-inner -->
+    </div>
+    <!-- /#footer-top -->
+    <div class="footer-bottom">
+        <div id="footer" class="footer container">
+            <div id="footer-inner">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div id="text-3" class="widget widget-text">
+                            <div class="textwidget text-center">&copy; 2017 <a href="https://facebook.com/karamuklu"> <strong>MKA</strong></a> - Tüm Hakları Saklıdır</div>
+                        </div>
+                    </div>
+                    <!-- /.copyright -->
+                    <!-- /.span6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#footer-inner -->
+        </div>
+        <!-- /#footer -->
+    </div>
+</div>
+<!-- /#footer-wrapper -->

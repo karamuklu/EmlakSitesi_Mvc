@@ -1,0 +1,116 @@
+@import 'compass/css3/border-radius';
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/box-sizing';
+@import 'compass/css3/text-shadow';
+@import 'compass/css3/transition';
+@import 'compass/css3/transform';
+@import 'compass/css3/background-clip';
+@import 'compass/css3/opacity';
+
+@import 'helpers/variables';
+@import 'helpers/color-primary';
+@import 'helpers/color-secondary';
+@import 'helpers/color-link';
+@import 'helpers/mixins';
+@import 'helpers/forms';
+@import 'helpers/header';
+@import 'helpers/widgets';
+@import 'helpers/footer';
+@import 'helpers/blog';
+@import 'helpers/properties-grid';
+@import 'helpers/property-detail';
+@import 'helpers/property-row';
+@import 'helpers/pricing';
+@import 'helpers/agents';
+@import 'helpers/faq';
+@import 'helpers/map';
+@import 'helpers/ezmark';
+@import 'helpers/carousel';
+@import 'helpers/property-large';
+@import 'helpers/idx';
+@import 'helpers/404';
+@import 'helpers/agencies';
+@import 'helpers/tabs';
+@import 'helpers/login-register';
+@import 'helpers/submission';
+
+body { font-family: $font-family-default; font-size: 14px; line-height: 20px; padding: 0px;
+	.page-header { border: none; margin: 15px 0px 10px; padding-bottom: 0px;
+		a { color: $color-primary; }
+	}
+	h1 { color: $color-primary; font-size: 18px; font-weight: normal; line-height: 1; }
+	h2 { color: $color-primary; font-size: 18px; font-weight: normal; line-height: 1;  }
+
+	a, a:focus, a:hover, a:active { color: $color-link; outline: none; }
+
+	@media (max-width: 767px) {
+
+	}
+}
+
+@media (min-width: 1199px) { font-size: 14px;
+	body {
+		.page-header { padding-bottom: 5px; }
+	}
+}
+
+.pagination {
+	ul { box-shadow: none; }
+}
+.pagination ul > li > a, .pagination ul > li > span { @include shadow; @include transition(0.2s); background-color: #fff; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; color: $color-primary; font-weight: bold; margin-right: 10px; padding: 7px 13px;  }
+.pagination ul > li > a:hover, .pagination ul > li > a:focus, .pagination ul > .active > a, .pagination ul > .active > span { background-color: $color-primary; color: #fff; }
+
+.map-wrapper { position: relative; margin-top: -170px; zoom: 1;
+	@media (max-width: 767px) {
+		margin-left: -20px; margin-right: -20px; margin-top: -180px;
+	}
+}
+
+.show-all { margin-top: 5px; text-align: right; margin-right: 20px;
+	a { color: $color-dark-gray; font-size: 14px; position: relative;
+		&:after { @include transition(0.2s); @include picto-pro; color: $color-medium-gray; content: "\e046";  font-size: 20px; bottom: -2px; margin-left: 5px; position: absolute;  }
+	}
+}
+
+hr { margin: 10px 0;}
+
+
+.alert { @include shadow(); @include text-shadow(none); border-radius: 0px; color: #fff; font-size: 18px; font-weight: bold; margin-top: 20px; padding-bottom: 15px; padding-top: 15px; text-align: center;
+	&.alert-error { background-color: #f20304; }
+	&.alert-success { background-color: #42b852; }
+	&.alert-info { background-color: #0dade9; }
+}
+
+html {
+	&.ie8 {
+		.top { background-color: transparent !important; }
+		.map-wrapper { position: relative !important; top: -150px !important; }
+		.property-type {
+			&.cottage, &.condo, &.building-area, &.family-house, &.single-home, &.villa, &.apartment {
+				background-image: none !important;
+				label { margin-left: 0px; text-align: center; }
+				&:after { display: none !important; }
+			}
+		}
+
+
+		.widget.properties {
+			.image {
+				a {
+					&:before, &:after { display: none !important; }
+				}
+			}
+		}
+	}
+}
+
+#lang_sel_list a { background-color: transparent !important; line-height: 1 !important; margin-top: 6px;}
+#lang_sel_list li {
+	&:first-child {
+		a { padding-left: 0px; }
+	}
+}
+
+#lang_sel_list img.iclflag {
+	display: block; margin-top: 1px !important; top: 0px !important;
+}

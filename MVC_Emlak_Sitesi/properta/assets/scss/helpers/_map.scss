@@ -1,0 +1,120 @@
+.marker { @include transition(0.2s); background-color: $color-secondary; border-radius: 50%; border: 6px solid $color-primary; border: inset 1px solid #fff; box-shadow: inset 0px 0px 15px rgba(0,0,0,0.3); width: 40px; height: 40px; margin-top: 0px; position: relative; zoom: 1;
+  &:after { @include transition(0.2s); border-radius: 50%; background-color: rgba(0,0,0,0.2); bottom: -25px; content: ""; display: block; height: 4px; margin-left: 12px; opacity: 0.2; position: absolute; width: 15px; }
+  &:before { @include transition(0.2s); border: 7px solid transparent; border-width: 7px 4px; border-top-color: $color-primary; bottom: -19px; content: ""; display: block; height: 0px; left: 50%; margin-left: -4px; position: absolute; width: 0px; }
+  &:hover { margin-top: -5px;
+    &:after { bottom: -30px; opacity: 1; }
+  }
+  .marker-inner { background-image: url('../img/markers/apartment.png'); background-position: center center; background-repeat: no-repeat; background-size: 40px 40px; height: 40px; width: 40px; }
+
+  &.apartment {
+    .marker-inner { background-image: url('../img/markers/apartment.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/apartment@2x.png');
+      }
+    }
+  }
+  &.building-area {
+    .marker-inner { background-image: url('../img/markers/building-area.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/building-area@2x.png');
+      }
+    }
+  }
+  &.condo {
+    .marker-inner { background-image: url('../img/markers/condo.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/condo@2x.png');
+      }
+    }
+  }
+  &.cottage {
+    .marker-inner { background-image: url('../img/markers/cottage.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/cottage@2x.png');
+      }
+    }
+  }
+  &.family-house {
+    .marker-inner { background-image: url('../img/markers/family-house.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/family-house@2x.png');
+      }
+    }
+  }
+  &.single-home {
+    .marker-inner { background-image: url('../img/markers/single-home.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/single-home@2x.png');
+      }
+    }
+  }
+  &.villa {
+    .marker-inner { background-image: url('../img/markers/villa.png');
+      @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+        background-image: url('../img/markers/villa@2x.png');
+      }
+    }
+  }
+}
+
+
+.infobox { background-color: #fff; box-shadow: 0px 15px 3px rgba(0,0,0,0.2); height: 95px; position: relative;  padding: 20px; min-width: 300px; display: inline-block; white-space: nowrap; z-index: 999; width: 100%; padding-right: 5px;
+  .image { display: inline-block; float: left;  width: 130px; margin-right: 20px; position: relative;
+    .contract-type { @include shadow; background-color: rgba(255,255,255,0.9); border-radius: 2px; color: $color-dark-gray; display: inline; font-size: 11px; font-weight: bold; right: 5px;  padding: 2px 7px 2px 7px; position: absolute; top: -10px; text-align: right; }
+  }
+  .close { @include transition(0.2s); right: 0px; margin-top: -20px; opacity: 0.5; position: absolute;
+    &:hover { opacity: 1; }
+  }
+  .info { display: inline-block; float: left; width: auto;
+    .title {
+      a { color: $color-primary; font-size: 14px; font-weight: bold;  }
+    }
+    .price { @include shadow; background-color: $color-primary; border-radius: 2px; bottom: 10px;  color: #fff;  display: inline; font-size: 14px; font-weight: bold; left: 25px;  position: absolute; padding: 4px 12px 4px 12px; }
+    .link { margin-top: -5px;
+      a { color: $color-primary; font-size: 12px; position: relative; text-decoration: none;
+        &:after { @include transition(0.2s); @include picto-pro; content: "\e045";  font-size: 18px; bottom: -2px; margin-left: 5px; position: absolute;  }
+        &:hover {
+          &:after { color: $color-secondary; }
+        }
+      }
+    }
+    .location { font-size: 12px; padding: 0px; margin-top: -3px; }
+    .property-info { box-shadow: none; border-bottom: 1px solid $color-light-gray; padding-left: 0; font-size: 12px; padding-bottom: 8px;
+      .area, .bathrooms,  { margin-right: 10px; }
+      .icon { color: $color-secondary; margin-left: -2px; margin-right: 10px; }
+    }
+  }
+  &:after { border: 7px solid transparent; border-width: 7px 4px; border-top-color: #fff; bottom: -13px; content: ""; display: block; height: 0px; left: 80px; margin-left: -4px; position: absolute; width: 0px; }
+}
+
+.clusterer { @include transition(0.2s); @include primary-color-opacity($color-primary, 0.8); border-radius: 50%; border: 6px solid $color-primary; border: inset 1px solid #fff; box-shadow: inset 0px 0px 15px rgba(0,0,0,0.3); position: relative; width: 40px; height: 40px;
+  &:hover { @include scale(1.05); }
+  .clusterer-inner { border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; color: #fff; font-size: 14px; font-weight: bold; height: 38px; line-height: 38px; text-align: center;  width: 38px;  }
+}
+
+.map {
+  img { max-width: none; }
+}
+
+.map-wrapper { float: left; margin-bottom: 0px; margin-left: 0px !important; margin-right: 0px !important; width: 100%;
+  .map {
+    .container {
+      .row { position: relative;
+        .span3 { float: left; position: absolute; top: 190px; z-index: 1;
+          @media (max-width: 767px) {
+              position: relative; margin-bottom: 20px; margin-top: 190px; top: auto;
+          }
+          .property-filter { @include primary-color-opacity($color-primary,0.9); @include transition(0.2s); z-index: 9999;
+            label { color: #fff; }
+            .btn { @include secondary-button; }
+            &:hover { @include primary-color-opacity($color-primary,1); }
+						.chzn-container { width: 100% !important; }
+						@media (max-width: 767px) {
+							margin-left: 20px !important; margin-right: 20px !important;
+						}
+          }
+        }
+      }
+    }
+  }
+}

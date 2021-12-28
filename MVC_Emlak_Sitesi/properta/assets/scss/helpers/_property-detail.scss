@@ -1,0 +1,50 @@
+.single-property {
+  .page-header { display: inline-block; font-size: 24px; margin-bottom: 10px; margin-top: 10px; }
+  .property-detail {
+    .overview {
+      @media (max-width: 767px){
+        width:100%
+      }
+
+      table { width: 100%;
+        tbody {
+          tr { border-bottom: 1px solid $color-light-gray;
+            &:last-child { border: none; }
+            th { padding-bottom: 8px; padding-top: 8px; text-align: left; }
+            td { text-align: right; }
+            .price { color: $color-primary; font-size: 18px; font-weight: bold; }
+            .contract-type { @include shadow; background-color: $color-primary; border-radius: 2px; color: #fff; display: inline; font-size: 14px; padding: 4px 8px 4px 8px;}
+          }
+        }
+      }
+    }
+    ul { list-style: none;
+      li { padding-left: 30px; padding-bottom: 6px; padding-top: 6px; }
+      .checked { background-image: url("../img/tick.png"); background-position: 0% 50%; background-repeat: no-repeat; }
+      .plain { background-image: url("../img/cross.png"); background-position: 0% 50%; background-repeat: no-repeat; }
+    }
+    img { @include shadow; margin-bottom: 10px; }
+    #property-map { height: 270px;
+			img { max-width: none; }
+		}
+  }
+  .gallery {
+    .content { position: relative;
+      .more { float: right; line-height: 70px; text-align: center; width: 70px; position: relative;
+        .icon { color: $color-secondary; display: block; height: 0px; margin-top: 10px; font-size: 28px; text-align: center; width: 70px; }
+      }
+      ul { height: auto; list-style: none; margin-bottom: 0px; margin-left: 0px; margin-top: 10px; max-width: 470px; overflow: visible; position: relative;
+        li { @include shadow; @include transition(0.3s); display: inline-block; padding-left: 0px; margin-right: 20px; margin-bottom: 20px; width: 70px; height: 70px; overflow: hidden; padding-bottom: 0px; padding-top: 0px; opacity: 0.3;
+          .thumb {  clip:rect(0px,70px,70px,0px); position: absolute; }
+          img {  height: 70px; margin-left: -20%;  }
+          &.active { opacity: 1; }
+          &:hover { opacity: 1; }
+        }
+      }
+    }
+  }
+}
+
+.map {
+  img { max-width: none; }
+}

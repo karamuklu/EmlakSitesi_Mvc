@@ -1,0 +1,187 @@
+﻿@model MVC_Emlak_Sitesi.Models.TBLEMLAK
+
+@{
+  Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Silmek istediğinizden emin misiniz ?</h3>
+    <div>
+        @*site haritasi*@
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
+            <li><a href="/EMLAK/Index">Emlaklar</a></li>
+            <li class="active">Silme</li>
+        </ol>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LAT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LAT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LNG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LNG)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ILAN_BASLIGI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ILAN_BASLIGI)
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.ILAN_ICERIGI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ILAN_ICERIGI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ILAN_TARIHI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ILAN_TARIHI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SATILIK_KIRALIK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SATILIK_KIRALIK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BINA_YASI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BINA_YASI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BULUNDUGU_KAT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BULUNDUGU_KAT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TOPLAM_KAT_SAYISI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TOPLAM_KAT_SAYISI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ISITMA_TIPI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ISITMA_TIPI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FIYAT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FIYAT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.M2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.M2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ODA_SAYISI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ODA_SAYISI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KONUMU)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KONUMU)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ONE_CIKAN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ONE_CIKAN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FIYATI_DUSEN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FIYATI_DUSEN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TBLSORUMLU.ADI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TBLSORUMLU.ADI)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TBLEMLAKTIP.Emlak_Tipi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TBLEMLAKTIP.Emlak_Tipi)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Sil" class="btn btn-danger" />
+                @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script>
+        $().ready(function () {
+            $('body').addClass('skin-blue fixed sidebar-mini sidebar-collapse')
+        })
+    </script>
+</body>
+</html>

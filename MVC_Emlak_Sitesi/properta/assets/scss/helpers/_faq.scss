@@ -1,0 +1,11 @@
+.accordion {
+  a { color: $color-primary; }
+  .accordion-group { border: none;
+    .accordion-heading { @include shadow; border: 1px solid rgba(0,0,0,0.1); border-radius: 3px; background-color: #fff; margin-bottom: 10px;
+      .accordion-toggle { padding: 10px 5px;
+        .icon { color: $color-secondary; font-size: 24px; line-height: 14px; margin-right: 10px;}
+      }
+    }
+    .accordion-inner { border: none; }
+  }
+}

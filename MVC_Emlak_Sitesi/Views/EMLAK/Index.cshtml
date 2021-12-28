@@ -1,0 +1,125 @@
+﻿@model IEnumerable<MVC_Emlak_Sitesi.Models.TBLEMLAK>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <p>
+                @Html.ActionLink("Yeni İlan Ekle", "Create", null, new {@class="btn btn-primary" })
+            </p>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ILAN_BASLIGI)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ILAN_TARIHI)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SATILIK_KIRALIK)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FIYAT)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.M2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ODA_SAYISI)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.KONUMU)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ONE_CIKAN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FIYATI_DUSEN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TBLSORUMLU.ADI) @Html.DisplayNameFor(model => model.TBLSORUMLU.SOYADI)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TBLEMLAKTIP.Emlak_Tipi)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="~/Anasayfa/EmlakDetay/@item.ILAN_NO">@item.ILAN_BASLIGI</a>
+                        </td>
+                        <td>
+                            @String.Format("{0:dd/MM/yyyy}", item.ILAN_TARIHI)
+                        </td>
+                        <td>
+                            @if (item.SATILIK_KIRALIK == 1)
+                            {
+                                <label class="label label-warning">Kiralık</label>
+                            }
+                            else
+                            {
+                                <label class="label label-primary">Satılık</label>
+                            }
+                        </td>
+                        <td>
+                            <b>@string.Format("{0:C}", item.FIYAT)</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.M2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ODA_SAYISI)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KONUMU)
+                        </td>
+                        <td>
+                            @if (item.ONE_CIKAN.Value)
+                            {
+                                <label class="label label-success">Öne Çıkan</label>
+                            }
+                            else
+                            {
+                                <label class="label label-danger">Sabit İlan</label>
+                            }
+                        </td>
+                        <td>
+                            @if (item.FIYATI_DUSEN.Value)
+                            {
+                                <label class="label label-success">Fiyatı Düşen</label>
+                            }
+                            else
+                            {
+                                <label class="label label-danger">Fiyatı Sabit</label>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TBLSORUMLU.ADI) @Html.DisplayFor(modelItem => item.TBLSORUMLU.SOYADI)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TBLEMLAKTIP.Emlak_Tipi)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ILAN_NO }, new { @class = "btn btn-primary btn-xs" })
+                            @Html.ActionLink("Sil", "Delete", new { id = item.ILAN_NO }, new { @class = "btn btn-danger btn-xs" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</section>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script>
+    $().ready(function () {
+        $('body').addClass('skin-blue fixed sidebar-mini sidebar-collapse')
+    })
+</script>

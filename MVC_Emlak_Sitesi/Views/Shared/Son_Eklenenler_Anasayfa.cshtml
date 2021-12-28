@@ -1,0 +1,88 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+@{
+    EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+    var geriTarih = DateTime.Now.AddDays(-30);
+    var Son_Eklenenler = ent.TBLEMLAK.Where(i => i.ILAN_TARIHI < DateTime.Now && i.ILAN_TARIHI> geriTarih).ToList();
+}
+
+<h1 class="page-header">Son Eklenen İlanlar</h1>
+<div class="properties-grid">
+    <div class="row-fluid">
+        @foreach (var item in Son_Eklenenler)
+        {
+            <div class="span3">
+                <div class="property">
+                    <div class="image">
+                        <div class="content">
+
+                            <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                                <div class="description">
+                                    <p>
+                                        @item.ILAN_BASLIGI
+                                    </p>
+                                </div>
+                                <img src="@item.TBLRESIM.Where(i=>i.EMLAK_ILAN_NO==item.ILAN_NO).FirstOrDefault().RESIM_YOLU" alt="@item.TBLRESIM.Where(i=>i.EMLAK_ILAN_NO==item.ILAN_NO).FirstOrDefault().RESIM_YOLU">
+                            </a>
+                        </div>
+                        <!-- /.content -->
+                        @if (item.SATILIK_KIRALIK == 1)
+                        {
+                            <div class="rent-sale" style="background-color:#f69679">
+
+                                <span>Kiralık</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="rent-sale">
+                                <span>Satılık</span>
+                            </div>
+                        }
+
+                        <!-- /.rent-sale -->
+                        <div class="price">
+                          @*  @String.Format("{0:C", item.FIYAT)*@
+                        </div>
+                        <!-- /.price -->
+                    </div>
+                    <!-- /.image -->
+                    <div class="info">
+                        <div class="title clearfix">
+                            <h2>
+                                <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                                    @item.KONUMU
+                                </a>
+                            </h2>
+                        </div>
+                        <!-- /.title -->
+                        <div class="location">@item.KONUMU</div>
+                        <!-- /.location -->
+                    </div>
+                    <!-- /.info -->
+                </div>
+                <!-- /.property -->
+                <div class="property-info clearfix">
+                    <div class="area">
+                        <i class="icon icon-normal-cursor-scale-up"></i>
+                        @item.M2 m<sup>2</sup>
+                    </div>
+                    <!-- /.area -->
+                    <div class="text-right">
+                        @item.ODA_SAYISI
+                    </div>
+                    <!-- /.bedrooms -->
+                </div>
+                <!-- /.property-info -->
+            </div>
+        }
+    </div>
+
+    <div class="row-fluid">
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.properties-grid -->
+<div class="show-all">
+    <a href="~/Anasayfa/EmlakListesi">Hepsini Gör</a>
+</div>

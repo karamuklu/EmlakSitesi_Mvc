@@ -1,0 +1,31 @@
+.carousel { @include shadow; background-color: $color-light-gray; padding-top: 6px; padding-bottom: 6px;
+  .bx-wrapper {
+
+		@media (min-width: 980px) and (max-width: 1199px) {
+			max-width: 590px !important;
+		}
+
+		@media (min-width: 768px) and (max-width: 979px) {
+			max-width: 390px !important;
+		}
+
+		@media (max-width: 767px) {
+			max-width: 180px !important;
+		}
+
+    .bx-viewport {
+      ul {
+        &.properties-grid {
+          li {
+            .property { background-color: $color-primary; width: 180px;
+              h2 { background-color: transparent; font-size: 12px;
+                a { color: #fff; }
+              }
+              .location { color: #fff; font-size: 11px; margin-top: -10px; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

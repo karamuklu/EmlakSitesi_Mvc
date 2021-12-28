@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLEMLAK">
+          <Key>
+            <PropertyRef Name="ILAN_NO" />
+          </Key>
+          <Property Name="ILAN_NO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LNG" Type="float" />
+          <Property Name="ILAN_HTML" Type="nvarchar(max)" />
+          <Property Name="ILAN_ICERIGI" Type="nvarchar(max)" />
+          <Property Name="ILAN_BASLIGI" Type="nvarchar(max)" />
+          <Property Name="ILAN_TARIHI" Type="date" />
+          <Property Name="SATILIK_KIRALIK" Type="int" Nullable="false" />
+          <Property Name="BINA_YASI" Type="int" />
+          <Property Name="BULUNDUGU_KAT" Type="int" />
+          <Property Name="TOPLAM_KAT_SAYISI" Type="int" />
+          <Property Name="ISITMA_TIPI" Type="int" />
+          <Property Name="FIYAT" Type="int" />
+          <Property Name="SORUMLU_ID" Type="int" />
+          <Property Name="M2" Type="int" />
+          <Property Name="ODA_SAYISI" Type="nvarchar" MaxLength="20" />
+          <Property Name="KONUMU" Type="nvarchar" MaxLength="100" />
+          <Property Name="ONE_CIKAN" Type="bit" />
+          <Property Name="EMLAK_TIP_ID" Type="int" />
+          <Property Name="FIYATI_DUSEN" Type="bit" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'E:\YAZıLıM İŞLERI\HAZıR SITELER\EMLAK_SITESI_MVC\MVC_EMLAK_SITESI\MVC_EMLAK_SITESI\APP_DATA\DATABASE1.MDF.dbo.TBLEMLAK_DETAY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TBLEMLAK_DETAY">
+          <Key>
+            <PropertyRef Name="ILAN_DETAY_NO" />
+            <PropertyRef Name="OZELLIK" />
+            <PropertyRef Name="isDeleted" />
+          </Key>
+          <Property Name="ILAN_DETAY_NO" Type="int" Nullable="false" />
+          <Property Name="OZELLIK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VARYOK" Type="bit" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLEMLAKTIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emlak_Tipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici_Adi" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Adı" Type="nvarchar" MaxLength="30" />
+          <Property Name="Soyadı" Type="nvarchar" MaxLength="30" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="YETKI_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLRESIM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMLAK_ILAN_NO" Type="int" Nullable="false" />
+          <Property Name="RESIM_YOLU" Type="nvarchar(max)" />
+          <Property Name="ALT_ETIKETI" Type="nvarchar(max)" />
+          <Property Name="isDeleted" Type="bit" />
+          <Property Name="SIRA_NO" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBLSORUMLU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADI" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SOYADI" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEL_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="RESIM" Type="nvarchar(max)" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'E:\YAZıLıM İŞLERI\HAZıR SITELER\EMLAK_SITESI_MVC\MVC_EMLAK_SITESI\MVC_EMLAK_SITESI\APP_DATA\DATABASE1.MDF.dbo.SonEklenenIlanlar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SonEklenenIlanlar">
+          <Key>
+            <PropertyRef Name="ILAN_NO" />
+            <PropertyRef Name="SATILIK_KIRALIK" />
+          </Key>
+          <Property Name="BugundenFarki" Type="int" />
+          <Property Name="ILAN_NO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAT" Type="float" />
+          <Property Name="LNG" Type="float" />
+          <Property Name="ILAN_ICERIGI" Type="nvarchar(max)" />
+          <Property Name="ILAN_BASLIGI" Type="nvarchar(max)" />
+          <Property Name="ILAN_TARIHI" Type="date" />
+          <Property Name="SATILIK_KIRALIK" Type="int" Nullable="false" />
+          <Property Name="BINA_YASI" Type="int" />
+          <Property Name="BULUNDUGU_KAT" Type="int" />
+          <Property Name="TOPLAM_KAT_SAYISI" Type="int" />
+          <Property Name="ISITMA_TIPI" Type="int" />
+          <Property Name="FIYAT" Type="int" />
+          <Property Name="SORUMLU_ID" Type="int" />
+          <Property Name="M2" Type="int" />
+          <Property Name="ODA_SAYISI" Type="nvarchar" MaxLength="20" />
+          <Property Name="KONUMU" Type="nvarchar" MaxLength="100" />
+          <Property Name="ONE_CIKAN" Type="bit" />
+          <Property Name="EMLAK_TIP_ID" Type="int" />
+          <Property Name="FIYATI_DUSEN" Type="bit" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_TBLEMLAK_DETAY_TBLEMLAK">
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="1" />
+          <End Role="TBLEMLAK_DETAY" Type="Self.TBLEMLAK_DETAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAK">
+              <PropertyRef Name="ILAN_NO" />
+            </Principal>
+            <Dependent Role="TBLEMLAK_DETAY">
+              <PropertyRef Name="ILAN_DETAY_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEMLAK_TBLEMLAKTIP">
+          <End Role="TBLEMLAKTIP" Type="Self.TBLEMLAKTIP" Multiplicity="0..1" />
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAKTIP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEMLAK">
+              <PropertyRef Name="EMLAK_TIP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEMLAK_TBLSORUMLU">
+          <End Role="TBLSORUMLU" Type="Self.TBLSORUMLU" Multiplicity="0..1" />
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSORUMLU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEMLAK">
+              <PropertyRef Name="SORUMLU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLRESIM_TBLEMLAK1">
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="1" />
+          <End Role="TBLRESIM" Type="Self.TBLRESIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAK">
+              <PropertyRef Name="ILAN_NO" />
+            </Principal>
+            <Dependent Role="TBLRESIM">
+              <PropertyRef Name="EMLAK_ILAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="TBLEMLAK" EntityType="Self.TBLEMLAK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLEMLAKTIP" EntityType="Self.TBLEMLAKTIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKULLANICI" EntityType="Self.TBLKULLANICI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRESIM" EntityType="Self.TBLRESIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSORUMLU" EntityType="Self.TBLSORUMLU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLEMLAK_DETAY" EntityType="Self.TBLEMLAK_DETAY" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TBLEMLAK_DETAY].[ILAN_DETAY_NO] AS [ILAN_DETAY_NO], 
+    [TBLEMLAK_DETAY].[OZELLIK] AS [OZELLIK], 
+    [TBLEMLAK_DETAY].[VARYOK] AS [VARYOK], 
+    [TBLEMLAK_DETAY].[isDeleted] AS [isDeleted]
+    FROM [dbo].[TBLEMLAK_DETAY] AS [TBLEMLAK_DETAY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SonEklenenIlanlar" EntityType="Self.SonEklenenIlanlar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SonEklenenIlanlar].[BugundenFarki] AS [BugundenFarki], 
+    [SonEklenenIlanlar].[ILAN_NO] AS [ILAN_NO], 
+    [SonEklenenIlanlar].[LAT] AS [LAT], 
+    [SonEklenenIlanlar].[LNG] AS [LNG], 
+    [SonEklenenIlanlar].[ILAN_ICERIGI] AS [ILAN_ICERIGI], 
+    [SonEklenenIlanlar].[ILAN_BASLIGI] AS [ILAN_BASLIGI], 
+    [SonEklenenIlanlar].[ILAN_TARIHI] AS [ILAN_TARIHI], 
+    [SonEklenenIlanlar].[SATILIK_KIRALIK] AS [SATILIK_KIRALIK], 
+    [SonEklenenIlanlar].[BINA_YASI] AS [BINA_YASI], 
+    [SonEklenenIlanlar].[BULUNDUGU_KAT] AS [BULUNDUGU_KAT], 
+    [SonEklenenIlanlar].[TOPLAM_KAT_SAYISI] AS [TOPLAM_KAT_SAYISI], 
+    [SonEklenenIlanlar].[ISITMA_TIPI] AS [ISITMA_TIPI], 
+    [SonEklenenIlanlar].[FIYAT] AS [FIYAT], 
+    [SonEklenenIlanlar].[SORUMLU_ID] AS [SORUMLU_ID], 
+    [SonEklenenIlanlar].[M2] AS [M2], 
+    [SonEklenenIlanlar].[ODA_SAYISI] AS [ODA_SAYISI], 
+    [SonEklenenIlanlar].[KONUMU] AS [KONUMU], 
+    [SonEklenenIlanlar].[ONE_CIKAN] AS [ONE_CIKAN], 
+    [SonEklenenIlanlar].[EMLAK_TIP_ID] AS [EMLAK_TIP_ID], 
+    [SonEklenenIlanlar].[FIYATI_DUSEN] AS [FIYATI_DUSEN], 
+    [SonEklenenIlanlar].[isDeleted] AS [isDeleted]
+    FROM [dbo].[SonEklenenIlanlar] AS [SonEklenenIlanlar]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TBLEMLAK_DETAY_TBLEMLAK" Association="Self.FK_TBLEMLAK_DETAY_TBLEMLAK">
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+            <End Role="TBLEMLAK_DETAY" EntitySet="TBLEMLAK_DETAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEMLAK_TBLEMLAKTIP" Association="Self.FK_TBLEMLAK_TBLEMLAKTIP">
+            <End Role="TBLEMLAKTIP" EntitySet="TBLEMLAKTIP" />
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEMLAK_TBLSORUMLU" Association="Self.FK_TBLEMLAK_TBLSORUMLU">
+            <End Role="TBLSORUMLU" EntitySet="TBLSORUMLU" />
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLRESIM_TBLEMLAK1" Association="Self.FK_TBLRESIM_TBLEMLAK1">
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+            <End Role="TBLRESIM" EntitySet="TBLRESIM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLEMLAK">
+          <Key>
+            <PropertyRef Name="ILAN_NO" />
+          </Key>
+          <Property Name="ILAN_NO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LNG" Type="Double" />
+          <Property Name="ILAN_HTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ILAN_ICERIGI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ILAN_BASLIGI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ILAN_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SATILIK_KIRALIK" Type="Int32" Nullable="false" />
+          <Property Name="BINA_YASI" Type="Int32" />
+          <Property Name="BULUNDUGU_KAT" Type="Int32" />
+          <Property Name="TOPLAM_KAT_SAYISI" Type="Int32" />
+          <Property Name="ISITMA_TIPI" Type="Int32" />
+          <Property Name="FIYAT" Type="Int32" />
+          <Property Name="SORUMLU_ID" Type="Int32" />
+          <Property Name="M2" Type="Int32" />
+          <Property Name="ODA_SAYISI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KONUMU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ONE_CIKAN" Type="Boolean" />
+          <Property Name="EMLAK_TIP_ID" Type="Int32" />
+          <Property Name="FIYATI_DUSEN" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="TBLEMLAK_DETAY" Relationship="Self.FK_TBLEMLAK_DETAY_TBLEMLAK" FromRole="TBLEMLAK" ToRole="TBLEMLAK_DETAY" />
+          <NavigationProperty Name="TBLEMLAKTIP" Relationship="Self.FK_TBLEMLAK_TBLEMLAKTIP" FromRole="TBLEMLAK" ToRole="TBLEMLAKTIP" />
+          <NavigationProperty Name="TBLSORUMLU" Relationship="Self.FK_TBLEMLAK_TBLSORUMLU" FromRole="TBLEMLAK" ToRole="TBLSORUMLU" />
+          <NavigationProperty Name="TBLRESIM" Relationship="Self.FK_TBLRESIM_TBLEMLAK1" FromRole="TBLEMLAK" ToRole="TBLRESIM" />
+        </EntityType>
+        <EntityType Name="TBLEMLAKTIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emlak_Tipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="TBLEMLAK" Relationship="Self.FK_TBLEMLAK_TBLEMLAKTIP" FromRole="TBLEMLAKTIP" ToRole="TBLEMLAK" />
+        </EntityType>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici_Adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adı" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadı" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="YETKI_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBLRESIM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMLAK_ILAN_NO" Type="Int32" Nullable="false" />
+          <Property Name="RESIM_YOLU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ALT_ETIKETI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <Property Name="SIRA_NO" Type="Byte" />
+          <NavigationProperty Name="TBLEMLAK" Relationship="Self.FK_TBLRESIM_TBLEMLAK1" FromRole="TBLRESIM" ToRole="TBLEMLAK" />
+        </EntityType>
+        <EntityType Name="TBLSORUMLU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEL_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RESIM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="TBLEMLAK" Relationship="Self.FK_TBLEMLAK_TBLSORUMLU" FromRole="TBLSORUMLU" ToRole="TBLEMLAK" />
+        </EntityType>
+        <EntityType Name="TBLEMLAK_DETAY">
+          <Key>
+            <PropertyRef Name="ILAN_DETAY_NO" />
+            <PropertyRef Name="OZELLIK" />
+            <PropertyRef Name="isDeleted" />
+          </Key>
+          <Property Name="ILAN_DETAY_NO" Type="Int32" Nullable="false" />
+          <Property Name="OZELLIK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VARYOK" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TBLEMLAK" Relationship="Self.FK_TBLEMLAK_DETAY_TBLEMLAK" FromRole="TBLEMLAK_DETAY" ToRole="TBLEMLAK" />
+        </EntityType>
+        <EntityType Name="SonEklenenIlanlar">
+          <Key>
+            <PropertyRef Name="ILAN_NO" />
+            <PropertyRef Name="SATILIK_KIRALIK" />
+          </Key>
+          <Property Name="BugundenFarki" Type="Int32" />
+          <Property Name="ILAN_NO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAT" Type="Double" />
+          <Property Name="LNG" Type="Double" />
+          <Property Name="ILAN_ICERIGI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ILAN_BASLIGI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ILAN_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SATILIK_KIRALIK" Type="Int32" Nullable="false" />
+          <Property Name="BINA_YASI" Type="Int32" />
+          <Property Name="BULUNDUGU_KAT" Type="Int32" />
+          <Property Name="TOPLAM_KAT_SAYISI" Type="Int32" />
+          <Property Name="ISITMA_TIPI" Type="Int32" />
+          <Property Name="FIYAT" Type="Int32" />
+          <Property Name="SORUMLU_ID" Type="Int32" />
+          <Property Name="M2" Type="Int32" />
+          <Property Name="ODA_SAYISI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KONUMU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ONE_CIKAN" Type="Boolean" />
+          <Property Name="EMLAK_TIP_ID" Type="Int32" />
+          <Property Name="FIYATI_DUSEN" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_TBLEMLAK_DETAY_TBLEMLAK">
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="1" />
+          <End Role="TBLEMLAK_DETAY" Type="Self.TBLEMLAK_DETAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAK">
+              <PropertyRef Name="ILAN_NO" />
+            </Principal>
+            <Dependent Role="TBLEMLAK_DETAY">
+              <PropertyRef Name="ILAN_DETAY_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEMLAK_TBLEMLAKTIP">
+          <End Role="TBLEMLAKTIP" Type="Self.TBLEMLAKTIP" Multiplicity="0..1" />
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAKTIP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEMLAK">
+              <PropertyRef Name="EMLAK_TIP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEMLAK_TBLSORUMLU">
+          <End Role="TBLSORUMLU" Type="Self.TBLSORUMLU" Multiplicity="0..1" />
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSORUMLU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLEMLAK">
+              <PropertyRef Name="SORUMLU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLRESIM_TBLEMLAK1">
+          <End Role="TBLEMLAK" Type="Self.TBLEMLAK" Multiplicity="1" />
+          <End Role="TBLRESIM" Type="Self.TBLRESIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEMLAK">
+              <PropertyRef Name="ILAN_NO" />
+            </Principal>
+            <Dependent Role="TBLRESIM">
+              <PropertyRef Name="EMLAK_ILAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EMLAK_SITESIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLEMLAK" EntityType="Self.TBLEMLAK" />
+          <EntitySet Name="TBLEMLAKTIP" EntityType="Self.TBLEMLAKTIP" />
+          <EntitySet Name="TBLKULLANICI" EntityType="Self.TBLKULLANICI" />
+          <EntitySet Name="TBLRESIM" EntityType="Self.TBLRESIM" />
+          <EntitySet Name="TBLSORUMLU" EntityType="Self.TBLSORUMLU" />
+          <EntitySet Name="TBLEMLAK_DETAY" EntityType="Self.TBLEMLAK_DETAY" />
+          <EntitySet Name="SonEklenenIlanlar" EntityType="Self.SonEklenenIlanlar" />
+          <AssociationSet Name="FK_TBLEMLAK_DETAY_TBLEMLAK" Association="Self.FK_TBLEMLAK_DETAY_TBLEMLAK">
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+            <End Role="TBLEMLAK_DETAY" EntitySet="TBLEMLAK_DETAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEMLAK_TBLEMLAKTIP" Association="Self.FK_TBLEMLAK_TBLEMLAKTIP">
+            <End Role="TBLEMLAKTIP" EntitySet="TBLEMLAKTIP" />
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEMLAK_TBLSORUMLU" Association="Self.FK_TBLEMLAK_TBLSORUMLU">
+            <End Role="TBLSORUMLU" EntitySet="TBLSORUMLU" />
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLRESIM_TBLEMLAK1" Association="Self.FK_TBLRESIM_TBLEMLAK1">
+            <End Role="TBLEMLAK" EntitySet="TBLEMLAK" />
+            <End Role="TBLRESIM" EntitySet="TBLRESIM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="EMLAK_SITESIEntities">
+          <EntitySetMapping Name="TBLEMLAK">
+            <EntityTypeMapping TypeName="Database1Model.TBLEMLAK">
+              <MappingFragment StoreEntitySet="TBLEMLAK">
+                <ScalarProperty Name="ILAN_NO" ColumnName="ILAN_NO" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="LNG" ColumnName="LNG" />
+                <ScalarProperty Name="ILAN_HTML" ColumnName="ILAN_HTML" />
+                <ScalarProperty Name="ILAN_ICERIGI" ColumnName="ILAN_ICERIGI" />
+                <ScalarProperty Name="ILAN_BASLIGI" ColumnName="ILAN_BASLIGI" />
+                <ScalarProperty Name="ILAN_TARIHI" ColumnName="ILAN_TARIHI" />
+                <ScalarProperty Name="SATILIK_KIRALIK" ColumnName="SATILIK_KIRALIK" />
+                <ScalarProperty Name="BINA_YASI" ColumnName="BINA_YASI" />
+                <ScalarProperty Name="BULUNDUGU_KAT" ColumnName="BULUNDUGU_KAT" />
+                <ScalarProperty Name="TOPLAM_KAT_SAYISI" ColumnName="TOPLAM_KAT_SAYISI" />
+                <ScalarProperty Name="ISITMA_TIPI" ColumnName="ISITMA_TIPI" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="SORUMLU_ID" ColumnName="SORUMLU_ID" />
+                <ScalarProperty Name="M2" ColumnName="M2" />
+                <ScalarProperty Name="ODA_SAYISI" ColumnName="ODA_SAYISI" />
+                <ScalarProperty Name="KONUMU" ColumnName="KONUMU" />
+                <ScalarProperty Name="ONE_CIKAN" ColumnName="ONE_CIKAN" />
+                <ScalarProperty Name="EMLAK_TIP_ID" ColumnName="EMLAK_TIP_ID" />
+                <ScalarProperty Name="FIYATI_DUSEN" ColumnName="FIYATI_DUSEN" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLEMLAKTIP">
+            <EntityTypeMapping TypeName="Database1Model.TBLEMLAKTIP">
+              <MappingFragment StoreEntitySet="TBLEMLAKTIP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Emlak_Tipi" ColumnName="Emlak_Tipi" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKULLANICI">
+            <EntityTypeMapping TypeName="Database1Model.TBLKULLANICI">
+              <MappingFragment StoreEntitySet="TBLKULLANICI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici_Adi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="Adı" ColumnName="Adı" />
+                <ScalarProperty Name="Soyadı" ColumnName="Soyadı" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="YETKI_ID" ColumnName="YETKI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRESIM">
+            <EntityTypeMapping TypeName="Database1Model.TBLRESIM">
+              <MappingFragment StoreEntitySet="TBLRESIM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMLAK_ILAN_NO" ColumnName="EMLAK_ILAN_NO" />
+                <ScalarProperty Name="RESIM_YOLU" ColumnName="RESIM_YOLU" />
+                <ScalarProperty Name="ALT_ETIKETI" ColumnName="ALT_ETIKETI" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="SIRA_NO" ColumnName="SIRA_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSORUMLU">
+            <EntityTypeMapping TypeName="Database1Model.TBLSORUMLU">
+              <MappingFragment StoreEntitySet="TBLSORUMLU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ADI" ColumnName="ADI" />
+                <ScalarProperty Name="SOYADI" ColumnName="SOYADI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TEL_NO" ColumnName="TEL_NO" />
+                <ScalarProperty Name="RESIM" ColumnName="RESIM" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLEMLAK_DETAY">
+            <EntityTypeMapping TypeName="Database1Model.TBLEMLAK_DETAY">
+              <MappingFragment StoreEntitySet="TBLEMLAK_DETAY">
+                <ScalarProperty Name="ILAN_DETAY_NO" ColumnName="ILAN_DETAY_NO" />
+                <ScalarProperty Name="OZELLIK" ColumnName="OZELLIK" />
+                <ScalarProperty Name="VARYOK" ColumnName="VARYOK" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SonEklenenIlanlar">
+            <EntityTypeMapping TypeName="Database1Model.SonEklenenIlanlar">
+              <MappingFragment StoreEntitySet="SonEklenenIlanlar">
+                <ScalarProperty Name="BugundenFarki" ColumnName="BugundenFarki" />
+                <ScalarProperty Name="ILAN_NO" ColumnName="ILAN_NO" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="LNG" ColumnName="LNG" />
+                <ScalarProperty Name="ILAN_ICERIGI" ColumnName="ILAN_ICERIGI" />
+                <ScalarProperty Name="ILAN_BASLIGI" ColumnName="ILAN_BASLIGI" />
+                <ScalarProperty Name="ILAN_TARIHI" ColumnName="ILAN_TARIHI" />
+                <ScalarProperty Name="SATILIK_KIRALIK" ColumnName="SATILIK_KIRALIK" />
+                <ScalarProperty Name="BINA_YASI" ColumnName="BINA_YASI" />
+                <ScalarProperty Name="BULUNDUGU_KAT" ColumnName="BULUNDUGU_KAT" />
+                <ScalarProperty Name="TOPLAM_KAT_SAYISI" ColumnName="TOPLAM_KAT_SAYISI" />
+                <ScalarProperty Name="ISITMA_TIPI" ColumnName="ISITMA_TIPI" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="SORUMLU_ID" ColumnName="SORUMLU_ID" />
+                <ScalarProperty Name="M2" ColumnName="M2" />
+                <ScalarProperty Name="ODA_SAYISI" ColumnName="ODA_SAYISI" />
+                <ScalarProperty Name="KONUMU" ColumnName="KONUMU" />
+                <ScalarProperty Name="ONE_CIKAN" ColumnName="ONE_CIKAN" />
+                <ScalarProperty Name="EMLAK_TIP_ID" ColumnName="EMLAK_TIP_ID" />
+                <ScalarProperty Name="FIYATI_DUSEN" ColumnName="FIYATI_DUSEN" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

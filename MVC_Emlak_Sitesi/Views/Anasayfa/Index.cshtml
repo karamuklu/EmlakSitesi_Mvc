@@ -1,0 +1,346 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+<div id="content" class="clearfix">
+    <div class="map-wrapper">
+        <div class="map">
+            <div id="map" class="map-inner" style="height: 600px"></div>
+            <!-- /.map-inner -->
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <div class="property-filter widget filter-horizontal">
+                            <div class="content">
+
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="bx-wrapper" style="max-width: 1080px; margin: 0px auto;">
+                                        <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 68px;">
+                                            <div class="property-types" style="width: 915%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                                <div class="property-type apartment" style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_6">
+                                                        <input type="checkbox" name="filter_type[]" title="Apartment" id="filter_type_6" class="no-ezmark" value="6"> Apartment
+                                                    </label>
+                                                </div>
+                                                <div class="property-type building-area " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_42">
+                                                        <input type="checkbox" name="filter_type[]" title="Building Area" id="filter_type_42" class="no-ezmark" value="42"> Building Area
+                                                    </label>
+                                                </div>
+                                                <div class="property-type condo " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_43">
+                                                        <input type="checkbox" name="filter_type[]" title="Condo" id="filter_type_43" class="no-ezmark" value="43"> Condo
+                                                    </label>
+                                                </div>
+                                                <div class="property-type cottage " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_44">
+                                                        <input type="checkbox" name="filter_type[]" title="Cottage" id="filter_type_44" class="no-ezmark" value="44"> Cottage
+                                                    </label>
+                                                </div>
+                                                <div class="property-type family-house " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_41">
+                                                        <input type="checkbox" name="filter_type[]" title="Family House" id="filter_type_41" class="no-ezmark" value="41"> Family House
+                                                    </label>
+                                                </div>
+                                                <div class="property-type single-home " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_40">
+                                                        <input type="checkbox" name="filter_type[]" title="Single Home" id="filter_type_40" class="no-ezmark" value="40"> Single Home
+                                                    </label>
+                                                </div>
+                                                <div class="property-type villa " style="float: left; list-style: none; position: relative; width: 180px;">
+                                                    <label for="filter_type_45">
+                                                        <input type="checkbox" name="filter_type[]" title="Villa" id="filter_type_45" class="no-ezmark" value="45"> Villa
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev disabled" href="">Prev</a><a class="bx-next" href="">Next</a></div></div>
+                                    </div>
+                                    
+                                    <!-- /.emlak özellikleri-types -->
+                                    <div class="general" style="margin-left:20px">
+                                        
+                                            @Html.DropDownList("ilan_No", null, "Konum", new { @class = "form-control" })
+
+                                            @Html.DropDownList("oda_Sayisi", new List<SelectListItem> {
+                                                                         new SelectListItem { Text="1+1", Value="1"},
+                                                                         new SelectListItem { Text="2+1", Value="2"},
+                                                                         new SelectListItem { Text="3+1", Value="3"}},"Oda Sayısı", new { @class = "form-control", @style = "margin-left:10px" })
+
+                                            @Html.TextBox("fiyat_ilk", null, new { @class = "form-control", @placeholder = "Başlangıç Fiyat", @style = "height:30px", })
+                                            @Html.TextBox("fiyat_son", null, new { @class = "form-control", @placeholder = "Bitiş Fiyat", @style = "height:30px;margin-left:10px" })
+
+                                            @Html.TextBox("mk_ilk", null, new { @class = "form-control", @placeholder = "Metrekareden", @style = "height:30px;margin-left:10px" })
+                                            @Html.TextBox("mk_son", null, new { @class = "form-control", @placeholder = "Metrekareye", @style = "height:30px;margin-left:10px" })
+
+                                        <input type="submit" name="btnAra" style="margin-right:20px" class="btn btn-primary btn-large" value="Filtrele" />
+                                        </div>
+                                   
+                                    <!-- /.general -->
+                                }
+                            </div>
+                            <!-- /.content -->
+                        </div>
+                        <!-- /.property-filter -->
+                    </div>
+                    <!-- /.span12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.map -->
+    </div>
+    <!-- /.map-wrapper -->
+
+    <div class="container">
+        <div class="row">
+            <div class="sidebar span3">
+                <form action="/Anasayfa/EmlakAra" method="post">
+                    <div id="quick-search" class="form-group">
+                        <h2>Hızlı Arama</h2>
+                        <div class="content">
+                            <div class="form-group text-center">
+                                <input type="text" name="aranan" id="aranan" placeholder="Emlak özellik giriniz" class="form-control" style="width:100%" />
+                                <input type="submit" name="Ara" value="Ara" class="btn btn-primary btn-large" style="width:100%" />
+                            </div>
+                            <!-- /.site-search -->
+                        </div>
+                        <!-- /.inner -->
+                    </div>
+                </form>
+                <div id="partners_widget-2" class="widget partners">
+                    <h2>Partners</h2>
+                    <div class="partners">
+                        <div class="row">
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.themeforest.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/themeforest.png"
+                                             class="thumbnail-image" alt="themeforest" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.partners -->
+                </div>
+
+                <div id="mostrecentproperties_widget-2" class="widget properties">
+                    <h2>Son Eklenen İlanlar</h2>
+                    <div class="content">
+
+                        @Html.Partial("_SonEklenenler_Detay")
+
+                    </div>
+                    <!-- /.content -->
+                </div>
+                <div id="agencies_widget-2" class="widget agencies">
+                    <h2>Emlakçılarımız</h2>
+                    <div class="content">
+                        @{
+                            EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+                            var sorumlular = ent.TBLSORUMLU.ToList();
+                        }
+
+                        @foreach (var item in sorumlular)
+                        {
+                            <div class="agency clearfix">
+                                <div class="header">
+                                    <div class="image">
+                                        <a href="/Anasayfa/EmlakciDetay/@item.ID">
+                                            <img src="@item.RESIM" alt="@item.ADI @item.SOYADI">
+                                        </a>
+                                    </div>
+                                    <!-- /.image -->
+                                    <div class="info">
+                                        <a href="/Anasayfa/EmlakciDetay/@item.ID"><h2>@item.ADI @item.SOYADI</h2></a>
+                                        <div class="properties-count">
+                                            <span class="number">@item.TBLEMLAK.Count()</span> ilan
+                                        </div>
+                                        <!-- /.properties-count -->
+                                        <a href="~/Anasayfa/EmlakciDetay/@item.ID " class="btn">Profili Gör</a>
+                                    </div>
+                                    <!-- /.info -->
+                                </div>
+                                <!-- /.header -->
+                                <div class="address">
+                                    Adres<br />
+                                    Adres 2
+                                </div>
+                                <!-- /.address -->
+                                <div class="email">
+                                    <a href="mailto:@item.EMAIL">@item.EMAIL</a>
+                                </div>
+                                <!-- /.email -->
+                                <div class="phone">
+                                    @item.TEL_NO
+                                </div>
+                                <!-- /.phone -->
+                            </div>
+                            <!-- /.agency -->
+                        }
+                    </div>
+                    <!-- /.content -->
+                </div>
+            </div>
+            <!-- /#sidebar -->
+            <div id="main" class="span9">
+
+                @Html.Partial("One_Cikanlar_Anasayfa")
+
+                @Html.Partial("Son_Eklenenler_Anasayfa")
+
+                <hr />
+                <div id="features-grid" class="features-grid widget">
+                    Buraya thumbnail eklenebilir
+                </div>
+
+                <div id="carouselproperties" class="property-carousel widget">
+                    <h2>Carousel Properties</h2>
+                    buraya da slider eklenebilir
+                </div>
+
+                <div id="partners_widget-3" class="widget partners">
+                    <h2>Referanslarımız konulabilir</h2>
+                    <div class="partners">
+                        <div class="row">
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.themeforest.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/themeforest.png"
+                                             class="thumbnail-image" alt="themeforest" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.activeden.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/activeden.png"
+                                             class="thumbnail-image" alt="activeden" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.3docean.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/3docean.png"
+                                             class="thumbnail-image" alt="3docean" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.codecanyon.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/code-canyon.png"
+                                             class="thumbnail-image" alt="code-canyon" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.photodune.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/photo-dune.png"
+                                             class="thumbnail-image" alt="photo-dune" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                            <div class="span3">
+                                <div class="partner">
+                                    <a href="http://www.graphicriver.net/">
+                                        <img width="270" height="70" src="http://preview.byaviators.com/template/properta/assets/img/partners/graphic-river.png"
+                                             class="thumbnail-image" alt="graphic-river" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.span3 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.partners -->
+                </div>
+            </div>
+            <!-- /#main -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+
+<div style="margin-top:200px"></div>
+<!-- /#content -->
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBirzPOFxNG6y9dmEo6OG9gAfW4EkJR5k0&callback=initMap"></script>
+<script>
+    $('input[name=Ara]').click(function (e) {
+        if ($('#aranan').val() == "") {
+            e.preventDefault();
+            alert('Lütfen değer giriniz');
+        }
+    });
+
+
+    
+
+    
+
+    var yerler = [];
+    $().ready(function () {
+        $.getJSON("/Anasayfa/YerleriGetir", function (data) {
+            for (var i = 0, len = data.length; i < len; i++) {
+                yerler.push(data[i]);
+            }
+            initMap();
+        });
+    });
+    function initMap() {
+        var labels = 'İşaretçiler';
+        var haritaAyar = {
+            zoom: 5,
+            center: { lat: 39.925533, lng: 32.866287 }
+        };
+
+        var map = new google.maps.Map(document.getElementById('map'), haritaAyar);
+        var infoWin = new google.maps.InfoWindow();
+        var markers = yerler.map(function (yerler, i) {
+            var marker = new google.maps.Marker({
+                position: { lat: yerler.LAT, lng: yerler.LNG },
+                animation: google.maps.Animation.DROP,
+                title: yerler.ILAN_BASLIGI,
+                icon: "/img/marker_3.png"
+            });
+            var emlakDurum = 1;
+            if (yerler.SATILIK_KIRALIK == 2) {
+                emlakDurum = 'Satılık'
+            }
+            else {
+                emlakDurum = 'Kiralık'
+            }
+            
+            var currency_symbol = "₺"
+            var formattedOutput = new Intl.NumberFormat('tr-TR', {
+                style: 'currency',
+                currency: 'TRY',
+                minimumFractionDigits: 2,
+            });
+
+            google.maps.event.addListener(marker, 'click', function (evt) {
+                infoWin.setContent('<div class="infobox clearfix" width="50px"><div class="image"><a href="/Anasayfa/EmlakDetay/' + (yerler.ILAN_NO) + '" ><img src="' + (yerler.RESIM) + '" alt="' + (yerler.ILAN_BASLIGI) + '" width="130px"></a><div id="emlakDurum" class="contract-type">' + emlakDurum + '</div></div><div class="info"><div class="title"><a href="/Anasayfa/EmlakDetay/' + (yerler.ILAN_NO) + '">' + (yerler.ILAN_BASLIGI) + '</a></div><div class="location" style="margin-top:5px">' + (yerler.KONUMU) + '</div><div class="property-info clearfix"><div class="area"><i class="icon icon-normal-cursor-scale-up"></i>' + (yerler.M2) + 'm<sup>2</sup></div><div class="text-right">' + (yerler.ODA_SAYISI) + '</div><div class="price">' + formattedOutput.format(yerler.FIYAT).replace(currency_symbol, '')  + ' TL</div><hr><div class="link"><a href="/Anasayfa/EmlakDetay/' + (yerler.ILAN_NO) + '">Detaylar</a></div></div></div>');
+                infoWin.open(map, marker)
+            })                                                                              
+            return marker;
+        });
+
+        var markerCluster = new MarkerClusterer(map, markers,
+            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    }
+</script>
+
+
+

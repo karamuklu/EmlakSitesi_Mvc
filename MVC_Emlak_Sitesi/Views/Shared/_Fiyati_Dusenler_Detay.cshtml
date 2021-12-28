@@ -1,0 +1,52 @@
+﻿@using MVC_Emlak_Sitesi.Models
+
+@{
+    EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+
+    var fiyati_Dusenler = ent.TBLEMLAK.Where(i => i.FIYATI_DUSEN==true).ToList();
+
+}
+
+@foreach (var item in fiyati_Dusenler.Take(3))
+{
+    
+<div class="property clearfix">
+    <div class="image">
+        <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+            <img width="570" height="425" src="@item.TBLRESIM.FirstOrDefault(i => i.EMLAK_ILAN_NO == item.ILAN_NO).RESIM_YOLU"
+                 class="thumbnail-image " alt="@item.TBLRESIM.FirstOrDefault(i => i.EMLAK_ILAN_NO == item.ILAN_NO).ALT_ETIKETI" />
+        </a>
+    </div>
+    <!-- /.image -->
+    <div class="wrapper">
+        <div class="title">
+            <h3>
+                <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                    @item.ILAN_BASLIGI
+                </a>
+            </h3>
+        </div>
+        <!-- /.title -->
+        <div class="location">@item.KONUMU</div>
+        <!-- /.location -->
+        <div class="price">
+            @string.Format("{0:C}", @item.FIYAT) 
+        </div>
+        <!-- /.price -->
+    </div>
+    <!-- /.wrapper -->
+</div>
+<!-- /.property -->
+<div class="property-info clearfix">
+    <div class="area">
+        <i class="icon icon-normal-cursor-scale-up"></i>
+        @item.M2 m<sup>2</sup>
+    </div>
+    <!-- /.area -->
+    <div class="text-right">
+        @item.ODA_SAYISI
+    </div>
+    <!-- /.bathrooms -->
+</div>
+<!-- /.info -->
+}

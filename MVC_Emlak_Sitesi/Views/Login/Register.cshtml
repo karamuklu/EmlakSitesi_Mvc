@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<form action="/Login/Register" method="post">
+    <!-- Form Module-->
+    <div class="module form-module">
+        <div class="toggle">
+            <i class="fa fa-times fa-pencil"></i>
+        </div>
+        <div class="module form-module">
+            <div class="form">
+                <h2>Yeni Hesap Oluşturun</h2>
+                <input type="text" name="kullaniciAdi" id="kullaniciAdi" placeholder="Kullanıcı Adı" />
+                <input type="password" name="sifre" id="sifre" placeholder="Şifre" />
+                <input type="password" name="name" placeholder="Şifre Tekrar" />
+                <input type="submit" name="Giris" value="Kaydet" />
+            </div>
+            @if (Session["Mesaj"] != null)
+            {
+                <div class="alert alert-danger">
+                    @Session["Mesaj"]
+                </div>
+            }
+            <div class="cta"><a href="/Anasayfa/Index">Anasayfa</a></div>
+        </div>
+    </div>
+</form>

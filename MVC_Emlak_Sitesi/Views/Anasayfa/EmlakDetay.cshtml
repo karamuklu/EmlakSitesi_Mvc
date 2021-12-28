@@ -1,0 +1,291 @@
+﻿@model MVC_Emlak_Sitesi.Models.TBLEMLAK
+@using MVC_Emlak_Sitesi.Models
+@{
+    ViewBag.Title = Model.ILAN_BASLIGI;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="shortcut icon" href="~/Content/gallery/img/favicon.ico">
+<link rel="stylesheet" href="~/Content/gallery/css/normalize.css">
+<link rel="stylesheet" href="~/Content/gallery/css/main.css">
+
+<script src="~/Content/gallery/js/modernizr-2.0.6.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="sidebar span3">
+            <div id="enquireproperties_widget-2" class="widget enquire">
+                <h1 class="page-header fl">Bizimle İletişime Geçin</h1>
+                <div class="content">
+                    <form method="post" action="/Anasayfa/MailGonder/@Model.ILAN_NO">
+                        <div class="control-group">
+                            <label class="control-label" for="inputName">
+                                İsminiz
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+                            <div class="controls">
+                                <input type="text" id="isim" name="isim" required="required">
+                            </div>
+                            <!-- /.controls -->
+                        </div><!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputPhone">
+                                Telefonunuz
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+                            <div class="controls">
+                                <input type="text" id="telefon" name="telefon" required="required">
+                            </div>
+                            <!-- /.controls -->
+                        </div><!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputDate">
+                                Tarih
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="date" id="tarih" name="tarih" required="required" style="width:95%">
+                            </div>
+                            <!-- /.controls -->
+                        </div><!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">
+                                Mail Adresiniz
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="email" id="email" name="email" required="required">
+                            </div>
+                            <!-- /.controls -->
+                        </div><!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputMessage">
+                                Mesajınız
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <textarea id="mesaj" name="mesaj" required="required"></textarea>
+                            </div>
+                            <!-- /.controls -->
+                        </div><!-- /.control-group -->
+
+                        <div class="form-actions">
+                            <input type="submit" name="gonder" value="Gönder" class="btn btn-primary arrow-right" style="margin-bottom:15px" />
+                        </div>
+                        @if (TempData["Mesaj"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["Mesaj"]
+                            </div>
+                        }
+                        <!-- /.form-actions -->
+                    </form>
+                </div>
+                <!-- /.content -->
+            </div>
+        </div>
+        <!-- /#sidebar -->
+        <div id="main" class="span9 single-property">
+            <h1 class="page-header fl">@Model.ILAN_BASLIGI</h1>
+            <div class="property-detail">
+                <div class="row">
+                    <div class="span7 gallery">
+                        <div class="preview">
+                            <img id="buyukResim" value=@Model.TBLRESIM.FirstOrDefault().SIRA_NO src=@Model.TBLRESIM.FirstOrDefault().RESIM_YOLU alt=@Model.TBLRESIM.FirstOrDefault().EMLAK_ILAN_NO>
+                        </div>
+                        <div class="content" style="margin-left:-40px">
+                            <ul id="resimler">
+                                @foreach (var item in Model.TBLRESIM)
+                                {
+                                    <li id=@item.SIRA_NO>
+                                        <div class="thumb">
+                                            <img id=@item.SIRA_NO src=@item.RESIM_YOLU alt=@item.ALT_ETIKETI>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="overview">
+                        <div class="pull-left overview">
+                       
+                            <div class="span2 pull-right">
+                                <div class="row">
+                                    <!-- <h2>Overview</h2> -->
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th>İlan Tarihi:</th>
+                                                <td><strong>@String.Format("{0:dd/MM/yyyy}", Model.ILAN_TARIHI)</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Fiyat:</th>
+                                                <td class="price">
+                                                    @string.Format("{0:C}", @Model.FIYAT)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>İlan No:</th>
+                                                <td><strong>@Model.ILAN_NO</strong></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tipi:</th>
+                                                <td>
+                                                    @if (@Model.SATILIK_KIRALIK == 1)
+                                                    {<span class="contract-type">
+                                                            Kiralık
+                                                        </span>
+                                                    }
+                                                    else
+                                                    { <span class="contract-type">
+                                                            Satılık
+                                                        </span>
+                                                    }
+
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Konumu:</th>
+                                                <td>@Model.KONUMU</td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <th>Oda Sayısı:</th>
+                                                <td>@Model.ODA_SAYISI</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>m<sup>2</sup>:</th>
+                                                <td>@Model.M2</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.span2 -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.overview -->
+                    </div>
+                </div>
+                <h2 class="page-header fl">Emlak Hakkında</h2>
+                <p>
+                    @Model.ILAN_ICERIGI
+                </p>
+                <hr />
+                <div class="row">
+                    <div class="span6">
+                        <div class="row">
+                            <div class="span12">
+                                <h2>Emlak Özellikleri</h2>
+                                <div class="row">
+                                    <ul class="span2">
+                                        @{
+                                            EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+                                            var emlakOzellikleri = ent.TBLEMLAK_DETAY.Where(i => i.ILAN_DETAY_NO == Model.ILAN_NO).ToList();
+                                        }
+
+                                        @foreach (var item in emlakOzellikleri.Take(7))
+                                        {
+                                            if (item.VARYOK == true)
+                                            {
+                                                <li class="checked">@item.OZELLIK</li>
+                                            }
+                                            else
+                                            {
+                                                <li class="plain">@item.OZELLIK</li>
+                                            }
+
+                                        }
+                                    </ul>
+                                    <ul class="span2">
+                                        @foreach (var item in emlakOzellikleri.Take(7))
+                                        {
+                                            if (item.VARYOK == true)
+                                            {
+                                                <li class="checked">@item.OZELLIK</li>
+                                            }
+                                            else
+                                            {
+                                                <li class="plain">@item.OZELLIK</li>
+                                            }
+                                        }
+                                    </ul>
+                                    <ul class="span2">
+                                        @foreach (var item in emlakOzellikleri.Take(7))
+                                        {
+                                            if (item.VARYOK == true)
+                                            {
+                                                <li class="checked">@item.OZELLIK</li>
+                                            }
+                                            else
+                                            {
+                                                <li class="plain">@item.OZELLIK</li>
+                                            }
+                                        }
+                                    </ul>
+                                    <div class="span3" style="margin-top:-40px">
+                                        <h2>Konumu</h2>
+                                        <div class="map">
+                                            <div id="map" class="map-inner" style="height: 250px;width:250px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.span12 -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /#main -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe8pMssgAsREa4z5vZBFpsmXMLmU0BpCU"></script>
+<script type="text/javascript">
+    $().ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/Anasayfa/EmlakKonumGetir/@Model.ILAN_NO"
+        }).done(function (data) {
+            //console.log(data[0].LAT, data[0].LNG)
+            var myLatlng = new google.maps.LatLng(data[0].LAT, data[0].LNG);
+            var mapOptions = {
+                zoom: 14,
+                center: myLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                title: data[0].ILAN_BASLIGI,
+                icon: data[0].RESIM,
+                animation: google.maps.Animation.DROP
+            });
+            marker.setMap(map);
+        });
+    });
+    $('#resimler li[id=1]').addClass('active');
+
+    $('#resimler li div img').click(function () {
+        $('#resimler li').removeClass();
+        var resim_id = $(this).attr('id');
+        $('#resimler li[id=' + resim_id + ']').addClass('active');
+        var resimYolu = $('#resimler li div img[id=' + resim_id + ']').attr('src');
+        //alert(resimYolu);
+        $('#buyukResim').attr('src', resimYolu);
+    });
+</script>

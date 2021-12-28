@@ -1,0 +1,220 @@
+.dsidx {
+  th, tr { background-color: transparent !important; color: $color-dark-gray !important; }
+}
+
+#dsidx-disclaimer,
+.dsidx-standalone-disclaimer { display: none; }
+
+.dsidx-results .dsidx-paging-control, #dsidx .dsidx-sorting-control {
+  font-size: 12px;
+  text-align: left;
+}
+
+.dsidx-results .dsidx-paging-control a, #dsidx .dsidx-sorting-control a {
+  text-decoration: none;
+}
+
+.dsidx-paging-control { float: left;  margin-top: 9px !important;
+  a { color: $color-secondary; }
+}
+.dsidx-sorting-control { float: right; text-align: left;
+  select { width: 260px; }
+  .chzn-container { margin-left: 10px;
+    a { text-align: left; }
+  }
+}
+
+#dsidx-map-control { clear: both; width: 100%; height: auto; border-bottom: 1px solid $color-light-gray; margin-bottom: 20px !important; padding-bottom: 15px; padding-top: 10px;
+  img { display: none; }
+  a { @include transition(0.2s); color: $color-primary; font-weight: bold; display: block; margin-left: -5px;
+    &:before { @include transition(0.2s); @include picto-pro; @include social-icons; @include opacity(0.8); color: $color-secondary; content: "\e063"; font-size: 32px;  margin-right: 10px; vertical-align: middle;  }
+    &:hover { text-decoration: none; color: $color-secondary;
+      &:before { @include opacity(1); }
+    }
+  }
+}
+
+#dsidx-map { border: none !important;
+  img { max-width: inherit; }
+}
+
+#dsidx-listings {
+  hr { display: none; }
+  .dsidx-listing { border-bottom: 1px solid $color-light-gray; margin-bottom: 20px !important; padding-bottom: 15px;
+    .dsidx-media {
+      @media (max-width: 767px) {
+          float: left; margin-bottom: 20px; width: 100%;
+      }
+
+      .dsidx-photo { border: 0px; float: left; max-height: inherit; position: relative;
+          img { width: 100%; }
+          @media (max-width: 767px) {
+            width: 100%;
+          }
+      }
+    }
+
+    .dsidx-primary-data { background-color: transparent; float: none; width: auto; margin-left: 20px;
+
+      @media (max-width: 767px) {
+          margin-left: 0px; padding-left: 0px; width: 100%;
+      }
+
+      .dsidx-address { margin-bottom: 15px;
+        a { color: $color-primary; font-size: 24px; font-weight: bold;  }
+      }
+      .dsidx-price { @include shadow; color: $color-primary; background-color: $color-light-gray; border-radius: 2px; display: inline; font-size: 18px; font-weight: bold; margin-bottom: 20px; padding: 6px 10px 6px 10px; }
+    }
+
+    .dsidx-secondary-data { float: none; margin-left: 20px;
+      @media (max-width: 767px) {
+          margin-left: 0px; padding-left: 0px; width: 100%;
+      }
+
+      > div { background-image: url("../img/tick.png"); background-position: left 0px; background-repeat: no-repeat; background-size: 20px 20px; display: inline-block; font-size: 12px; height: 20px; margin-top: 10px; padding-left: 25px; width: 20%; }
+    }
+  }
+}
+
+#dsidx-actions { margin-bottom: 15px; border-bottom: 1px solid $color-light-gray; margin-bottom: 10px !important; padding-bottom: 10px;
+  a { color: $color-primary; text-decoration: none !important;
+    &:hover {
+      &:before { @include transition(0.2s); color: $color-primary; }
+    }
+    &:before { @include transition(0.2s); @include picto-pro; color: $color-secondary; font-size: 22px; margin-right: 0px; vertical-align: middle;
+    }
+    &#dsidx-button-contact-agent {
+      &:before { content: "\e086"; }
+      img { display: none; }
+    }
+    &#dsidx-button-schedule-showing {
+      &:before {content: "\e13a"; }
+      img { display: none; }
+    }
+    &#dsidx-button-share {
+      &:before { content: "\e03e"; }
+      img { display: none; }
+    }
+    &#dsidx-button-print {
+      &:before { content: "\e05d"; }
+      img { display: none; }
+    }
+  }
+}
+
+#dsidx-header {
+  #dsidx-primary-data {
+    tbody {
+      tr { background-color: transparent; border-bottom: 1px solid $color-light-gray; color: $color-dark-gray;
+        > th {  font-size: 14px; font-weight: bold; margin-bottom: 10px; }
+        &#dsidx-price {
+          td { font-size: 18px; }
+        }
+      }
+    }
+  }
+  .jcbx-glry-classic { @include shadow; background-color: $color-light-gray;
+    .jb-panel-index {
+      &.jb-classifier-thumb-area { top: 270px !important;
+        .jbn-nav-button { top:-5px !important; }
+      }
+    }
+
+  }
+}
+
+blockquote {
+    &#dsidx-description { border: none; margin: 20px 0 !important; }
+}
+
+.dsidx-details {
+  h3 { color: $color-primary; font-size: 18px; }
+}
+
+.dsidx-supplemental-data {
+  &.dsidx-fields {
+    tr { @include transition(0.2s); color: $color-dark-gray; background-color: transparent !important; border-bottom: 1px solid $color-light-gray;
+      th { font-weight: bold !important; padding: 10px !important; width: 25%;}
+      td { vertical-align: middle !important; }
+      &:hover { background-color: rgba(0,0,0,0.03) !important; }
+    }
+  }
+}
+
+.dsidx-contact-form {
+  tr { @include transition(0.2s); background-color: transparent !important; vertical-align: middle !important;
+    td { @include set-input; height: 40px; vertical-align: middle !important;
+      label { color: $color-dark-gray; font-weight: bold; }
+
+    }
+    //&:hover { background-color: rgba(0,0,0,0.03) !important; }
+    .column-one { padding-top: 6px !important; }
+  }
+  .dsidx-contact-form-schedule-date-row {
+    select { width: 200px;
+      &.dsidx-contact-form-schedule-date-day { width: 100px; }
+    }
+  }
+  .ez-checkbox { float: none; margin-right: 20px; height: 25px; }
+  .dsidx-contact-form-schedule-date-row { vertical-align: middle !important;  }
+  .dsidx-contact-form-submit { @include primary-button; width: auto; }
+}
+
+#dsidx-secondary-data {
+  a { color: $color-primary !important; }
+}
+
+.dsidx-results-widget {
+  &.dsidx-widget {
+    ul.dsidx-list {
+      li {
+        a:before { @include  picto-pro; @include opacity(0.5); color: $color-primary; content: "\e0b4"; font-size: 18px; vertical-align: middle; }
+      }
+    }
+    .dsidx-expanded, {
+      .featured-listing { @include shadow;  background-color: $color-light-gray; margin:0px; margin-bottom: 20px;
+        a { display: block; margin: 10px; }
+        h4 {
+          a { color: $color-primary; font-size: 14px; text-align: left; }
+        }
+        ul { background-color: transparent; box-shadow: none; float: left; margin: 0; padding-top: 0;
+          li { border: none; margin: 0; padding: 0;
+            &.price { float: left; @include shadow; color: #fff; background-color: $color-primary; border-radius: 2px; display: inline; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; margin: 10px 0; }
+          }
+        }
+      }
+    }
+    .dsidx-map {
+      .dsidx-details { height: 0; }
+    }
+    .dsidx-slideshow { font-family: Arial;
+      .featured-listing { @include shadow;  background-color: $color-light-gray; margin:0px; margin-bottom: 20px;
+        a { display: block; margin: 10px; }
+        h4 {
+          a { color: $color-primary; font-size: 14px; text-align: left; }
+        }
+        p { float: left;  margin-left: 10px !important; padding-top: 0;
+          .price { @include shadow; color: #fff; background-color: $color-primary; border-radius: 2px; display: inline-block; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; margin: 10px 0; }
+        }
+      }
+    }
+    .dsidx-controls { margin-top: 10px; text-align: center; display: none;
+      a { color: $color-primary; }
+    }
+  }
+}
+
+.dsidx-widget-search { background-color: transparent !important; margin-bottom: 20px;
+  .dsidx-search-widget {
+    &.dsidx-widget { @include shadow;  background-color: $color-light-gray; padding-top: 10px;
+      form { @include set-input; margin: 0;  }
+      label { background-color: transparent; font-size: 14px; font-weight: bold; margin: 0px; padding: 0px; }
+      th { padding: 0; padding-right: 7px; }
+      .dsidx-search-button {
+        input { @include primary-button; width: auto; }
+      }
+    }
+  }
+}
+
+.dsidx-widget-single-listing-wrap { @include shadow; }

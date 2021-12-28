@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+
+
+<form action="/Login/Login" method="post">
+    <!-- Form Module--><div class="module form-module">
+        <div class="toggle">
+            <i class="fa fa-times fa-pencil"></i>
+        </div>
+        <div class="module form-module">
+            <div class="form">
+                <h2>Hesabınıza Giriş Yapın</h2>
+                <input type="text" name="kullaniciAdi" id="kullaniciAdi" placeholder="Kullanıcı Adı" />
+                <input type="password" name="sifre" id="sifre" placeholder="Şifre" />
+                <input type="submit" name="Giris" value="Giriş" />
+            </div>
+            @if (Session["Mesaj"] != null)
+            {
+                <div class="alert alert-danger" id="hataMesaji">
+                    @Session["Mesaj"]
+                </div>
+            }
+           
+
+            <div class="cta"><a href="/Login/Register">Yeni Kullanıcı</a></div>
+            <div class="cta"><a href="/Anasayfa/Index">Anasayfa</a></div>
+        </div>
+    </div>
+
+</form>

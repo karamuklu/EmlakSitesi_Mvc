@@ -1,0 +1,21 @@
+.post-type-archive-agency {
+  .agency { border-bottom: 1px solid $color-light-gray; display: inline-block; margin-bottom: 20px; padding-bottom: 20px;
+    .info { position: relative;
+      .box { vertical-align: middle;
+        .address { margin-bottom: 10px; margin-left: 30px;
+          &:before { @include picto-pro; color: $color-secondary; content: "\e061";  font-size: 20px; position: absolute; left: 0; }
+        }
+        .email { margin-bottom: 5px; margin-left: 30px;
+          &:before { @include picto-pro; color: $color-secondary; content: "\e093";  font-size: 20px;  position: absolute; left: 0; }
+        }
+        .phone { margin-left: 30px;
+          &:before { @include picto-pro; color: $color-secondary; content: "\e068";  font-size: 20px;  position: absolute; left: 0; }
+        }
+      }
+    }
+    .body {
+      h3 { margin: 0 0 10px 0; padding: 0;
+      }
+    }
+  }
+}

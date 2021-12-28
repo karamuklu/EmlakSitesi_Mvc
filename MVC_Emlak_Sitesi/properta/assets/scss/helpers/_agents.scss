@@ -1,0 +1,28 @@
+.post-type-archive-agent, .single-agent {
+  a { color: $color-primary; }
+  .agent {
+    .image { @include shadow;
+    }
+    .body {
+      h3 { line-height: 1;
+        a { font-size: 24px; font-weight: bold; }
+      }
+    }
+    .info { border-bottom: 1px solid $color-light-gray; margin-bottom: 20px; padding-bottom: 10px;
+      .box {
+        .phone, .office, .email { margin-bottom: 5px;}
+        .icon { color: $color-secondary; font-size: 20px; margin-right: 10px; margin-top: -2px;}
+        .email {
+          a { text-decoration: underline; }
+        }
+      }
+    }
+  }
+}
+
+.single-agent {
+  h1.page-header { font-size: 24px; font-weight: bold; }
+  .agent {
+    .info { border: none; }
+  }
+}

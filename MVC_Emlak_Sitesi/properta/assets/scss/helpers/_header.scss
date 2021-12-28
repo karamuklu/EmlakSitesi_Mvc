@@ -1,0 +1,208 @@
+.top { @include primary-color-opacity($color-primary, 0.1); border-top: 5px solid rgba(0, 0, 0, .1); padding: 15px 0px 10px 0px; position: relative; z-index: 2;
+	@media (max-width: 767px) {
+		margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px;
+	}
+
+  .top-inner { @include shadow; position: relative;
+    .breadcrumb { background-color: transparent; font-size: 12px; margin: 0; margin-top: 5px; padding: 0; padding-left: 3px; position: absolute; z-index: 0; bottom: -25px;
+      a { color: $color-primary; }
+    }
+    .header { background-color: $color-primary; border-bottom: 5px solid $color-secondary; padding: 0px 15px; position: relative; text-align: right; height: 60px;
+      .languages { @include shadow; background-color: #fff; height: 25px; padding-left: 10px; padding-right: 10px; position: absolute; right: 10px; vertical-align: middle; top: -20px;
+      }
+      .branding { display: inline-block;
+        .logo { display: inline-block; vertical-align: middle; line-height: 59px;
+          a { text-decoration: none; line-height: 59px;
+            img { vertical-align: middle; }
+          }
+        }
+        .site-name { display: inline-block; vertical-align: middle;
+          a { color: #fff; font-size: 22px; text-decoration: none; line-height: 1; margin-left: 10px; vertical-align: middle; text-decoration: none; }
+					@media (max-width: 767px) {
+						display: none;
+					}
+        }
+      }
+      .user-area { margin-top: 15px; }
+      .nav { margin: 0px; }
+      .menu-item {
+        a { color: #fff; line-height: 10px; margin-left: 10px; margin-right: 0; padding-right: 0;
+          &:hover, &:focus { background-color: transparent; color: $color-secondary; }
+        }
+      }
+      .contact-top { display: inline-block; margin-top: 15px; //margin-right: 20px; padding-right: 20px;
+				@media (max-width: 767px) {
+					display: none;
+				}
+
+        li { display: inline-block; vertical-align: middle;
+          a {  background-color: transparent;
+            i { -webkit-font-smoothing: antialiased; color: $color-primary; display: block; font-family: "JustVector", "Arial", sans-serif; font-size: 18px; font-style: normal; line-height: 23px; padding: 0px 3px; text-align: center;
+              //&:hover { opacity: 1 }
+            }
+            &:hover {
+              background-color: transparent;
+            }
+          }
+
+          &.flickr {
+            a { @include social-icons; padding-top: 3px; }
+          }
+          &.google-plus {
+            a { @include social-icons; padding-top: 4px; }
+          }
+          &.vimeo {
+            a { @include social-icons; padding-top: 2px; }
+          }
+          &.facebook {
+            a {@include social-icons; padding-top: 0px; }
+          }
+          &.google-plus {
+            a {@include social-icons; padding-top: 1px; }
+          }
+          &.twitter {
+            a {@include social-icons; padding-top: 0px; }
+          }
+          &.linkedin {
+            a {@include social-icons; padding-top: 0px; }
+          }
+        }
+        .email { padding-right: 20px; }
+        .title{ color: $color-secondary; font-size: 11px; font-weight: bold; line-height: 1; }
+      }
+    }
+
+    .navigation { background-color: #fff;
+			&.navbar {
+				.btn-navbar { @include box-shadow(none); background-color: transparent; background-image: none; border: 0px; border-radius: 0px; float: left; margin-left: 15px; opacity: 1; }
+			}
+
+      ul.nav { margin: 0px; position: relative; z-index: 999;
+        li { display: block; float: left; line-height: 40px;
+          a { color: $color-dark-gray; display: block; font-size: 14px; padding: 0 20px 0 20px; text-decoration: none; text-shadow: none; }
+          &:hover {
+            > a { background-color: transparent; color: $color-primary; }
+            > ul { visibility: visible; margin: 0px; }
+          }
+        }
+
+        ul { @include shadow; background-color: #fff; visibility: hidden; position: absolute; width: 220px;
+          li { float: none; display: block;
+            &:hover {  background-color: $color-light-gray; }
+            &.menuparent { }
+            ul { left: 201px; width: 200px;
+              li { top: 0px; }
+            }
+          }
+        }
+      }
+
+			@media (max-width: 979px) {
+				.nav-collapse { background-color: $color-primary !important; position: absolute; top: 103px; width: 100%; z-index: 999;
+					li { backgorund-color: $color-primary !important;  width: 100%;
+						&:hover { background-color: $color-primary !important;
+							ul { margin-left: 25px !important; }
+						}
+
+						ul { @include box-shadow(none); position: relative; visibility: visible; width: 100%;
+							li {
+								&:hover { background-color: $color-primary !important; }
+								ul { left: 0px !important; margin-top: 0px !important; }
+							}
+						}
+
+					}
+				}
+			}
+
+      .list-property { float: right; text-decoration: none;
+        .link { color: $color-primary; font-size: 14px; float: left; font-weight: bold; line-height: 38px; text-decoration: none;
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+        .ribbon { @include transition(0.2s); height: 35px; margin: 0 10px 0 10px; width: 40px; position: relative; color: #fff; background: $color-secondary; display: inline-block; top: 0px; float: right; z-index: 999999;
+          .icon { color: #fff; font-size: 32px; line-height: 35px; position: relative; margin-left: 3px; text-shadow: 0px 1px 2px rgba(0,0,0,0.3);  }
+        }
+        .ribbon:before { content: ""; top: 0px; position:absolute; display:block; border: 20px solid $color-secondary; }
+        .ribbon:before { bottom: -40px; border-bottom-color:transparent; z-index: 0;
+        }
+        &:hover {
+          .ribbon { height: 40px; }
+        }
+      }
+    }
+    &.inverted {
+      .user-area {
+        a {
+          @media (max-width: 767px) {
+            background-color: #fff; padding-right: 5px; padding-left: 5px;
+          }
+        }
+        .logout {
+          a { @include transition(0.2s); position: relative;
+            &:after { @include transition(0.2s); @include picto-pro; content: "\e014";  font-size: 24px; bottom: 1px; margin-left: 0px; position: absolute; opacity: 0.3;}
+          }
+        }
+        .my-account {
+          a { position: relative;
+            &:after { @include transition(0.2s); @include picto-pro; color: $color-secondary; content: "\e059";  font-size: 18px; bottom: 3px; margin-left: 3px; position: absolute; }
+          }
+        }
+      }
+      .header { background-color: #fff;
+        .site-name {
+          a { color: $color-primary; }
+        }
+        .menu-item {
+          a { @include transition(0.2s); color: $color-primary;
+            &:hover, &:focus { background-color: transparent; color: $color-secondary;
+              &:after { @include transition(0.2s); opacity: 1;}
+            }
+          }
+        }
+        .contact-top { color: $color-primary;
+          .email {}
+          .title{ color: $color-secondary;}
+        }
+      }
+      .navigation { background-color: $color-primary;
+        ul.nav {
+          li {
+            a { @include text-shadow(none); color: #fff; position: relative; background-color: transparent;  }
+            &:hover, &:focus { background-color: rgba(0,0,0,0.2);
+              > a { color: #fff;  }
+            }
+
+						&.menuparent { padding-right: 10px; position: relative;
+							&:after { @include rotate(90deg); color: rgba(255,255,255,0.5); content: "\e045"; display: block; font-family: 'PictoPro-Normal'; height: 10px; position: absolute; opacity: .8; right: 8px; top: 13px; width: 10px;
+								font-style: normal; font-weight: normal; font-variant: normal; font-size: 14px; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased;
+								@media (max-width: 979px) { display: none; }
+							}
+						}
+          }
+
+          ul { background-color: $color-primary;
+            li {
+              &:hover { background-color: rgba(0,0,0,0.2); }
+              &.menuparent {
+								&:after { @include rotate(0deg); @include box-shadow(none); @include text-shadow(none); color: rgba(255,255,255,0.5); content: "\e045"; display: block; font-family: 'PictoPro-Normal'; height: 10px; position: absolute; right: 15px; top: 13px; width: 10px;
+									font-style: normal; font-weight: normal; font-variant: normal; font-size: 14px; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased;
+									@media (max-width: 979px) { display: none; }
+								}
+							}
+              ul { left: 220px; width: 200px; margin-top: -40px;
+                li { top: 0px; }
+              }
+            }
+          }
+        }
+        .list-property {
+          .link { color: #fff; }
+        }
+      }
+    }
+  }
+}
+
+.rev_slider { margin-top: -155px !important; z-index: 0 !important; }

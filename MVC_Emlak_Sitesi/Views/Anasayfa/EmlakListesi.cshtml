@@ -1,0 +1,315 @@
+﻿@model IPagedList<MVC_Emlak_Sitesi.Models.TBLEMLAK>
+@using MVC_Emlak_Sitesi.Models
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "EmlakListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="sidebar span3">
+            <h2 class="page-header">Search Properties</h2>
+            <div class="property-filter widget">
+                <div class="content">
+                    <form method="get">
+                        <div class="location control-group">
+                            <label class="control-label">
+                                Konumu
+                            </label>
+
+                            <div class="controls">
+                                <select name="filter_location" id="selC6K" class="chzn-done" style="display: none;">
+                                    <option>-</option>
+                                    <option>Barney Circle</option>
+                                </select>
+
+                                <div id="selC6K_chzn" class="chzn-container chzn-container-single chzn-container-single-nosearch" style="width: 230px;" title="">
+                                    <a href="" class="chzn-single" tabindex="-1"><span>-</span><div><b></b></div></a>
+
+                                </div>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="type control-group">
+                            <label class="control-label">
+                                Emlak Tipi
+                            </label>
+
+                            <div class="controls">
+                                <select name="filter_type" id="selM4H" class="chzn-done" style="display: none;">
+                                    <option>-</option>
+                                    <option>Apartment</option>
+
+                                </select>
+                                <div id="selM4H_chzn" class="chzn-container chzn-container-single chzn-container-single-nosearch" style="width: 230px;" title="">
+                                    <a href="" class="chzn-single" tabindex="-1"><span>-</span><div><b></b></div></a>
+
+                                </div>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="rent control-group">
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <div class="ez-checkbox"><input type="checkbox" value="rent" class="ez-hide"></div> Kiralık
+                                </label>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="sale control-group">
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <div class="ez-checkbox"><input type="checkbox" value="sale" class="ez-hide"></div> Satılık
+                                </label>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="price-from control-group">
+                            <label class="control-label">
+                                Fiyat Başlangıç
+                            </label>
+
+                            <div class="controls">
+                                <select name="filter_price_from" id="selATH" class="chzn-done" style="display: none;">
+                                    <option value="">-</option>
+                                    <option value="1000">1,000 €</option>
+
+                                </select>
+                                <div id="selATH_chzn" class="chzn-container chzn-container-single chzn-container-single-nosearch" style="width: 230px;" title="">
+                                    <a href="" class="chzn-single" tabindex="-1"><span>-</span><div><b></b></div></a>
+                                </div>
+                                <!-- /.controls -->
+                            </div>
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="price-to control-group">
+                            <label class="control-label">
+                                Fiyat Bitiş
+                            </label>
+
+                            <div class="controls">
+                                <select name="filter_price_to" id="selMRC" class="chzn-done" style="display: none;">
+                                    <option value="">-</option>
+                                    <option value="1000">1,000 €</option>
+                                </select><div id="selMRC_chzn" class="chzn-container chzn-container-single chzn-container-single-nosearch" style="width: 230px;" title="">
+                                    <a href="" class="chzn-single" tabindex="-1"><span>-</span><div><b></b></div></a>
+                                </div>
+                                <!-- /.controls -->
+                            </div>
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="area-from control-group">
+                            <label class="control-label">
+                                En küçük m<sup>2</sup>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="filter_area_from">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="area-to control-group">
+                            <label class="control-label">
+                                En büyük m<sup>2</sup>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" value="" name="filter_area_to">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary btn-large">Filter now!</button>
+                        </div>
+                        <!-- /.form-actions -->
+
+                    </form>
+                </div>
+                <!-- /.content -->
+            </div>
+            <!-- /.property-filter -->
+
+            <div id="mostrecentproperties_widget-2" class="widget properties">
+                <h2>Son Eklenen İlanlar</h2>
+                <div class="content">
+                    @Html.Partial("_SonEklenenler_Detay")
+                </div>
+                <!-- /.content -->
+
+            </div>
+            <div id="agencies_widget-2" class="widget agencies">
+                <h2>Emlakçılarımız</h2>
+                <div class="content">
+                    @{
+                        EMLAK_SITESIEntities ent = new EMLAK_SITESIEntities();
+
+                        var sorumlular = ent.TBLSORUMLU.ToList();
+
+                    }
+
+                    @foreach (var item in sorumlular)
+                    {
+                        <div class="agency clearfix">
+                            <div class="header">
+                                <div class="image">
+                                    <a href="/Anasayfa/EmlakciDetay/@item.ID">
+                                        <img src="@item.RESIM" alt="@item.ADI @item.SOYADI">
+                                    </a>
+                                </div>
+                                <!-- /.image -->
+                                <div class="info">
+                                    <a href="/Anasayfa/EmlakciDetay/@item.ID"><h2>@item.ADI @item.SOYADI</h2></a>
+                                    <div class="properties-count">
+                                        <span class="number">@item.TBLEMLAK.Count()</span> ilan
+                                    </div>
+                                    <!-- /.properties-count -->
+                                    <a href="~/Anasayfa/EmlakciDetay/@item.ID " class="btn">Profili Gör</a>
+                                </div>
+                                <!-- /.info -->
+                            </div>
+                            <!-- /.header -->
+                            <div class="address">
+                                Adres<br />
+                                Adres 2
+                            </div>
+                            <!-- /.address -->
+                            <div class="email">
+                                <a href="mailto:@item.EMAIL">@item.EMAIL</a>
+                            </div>
+                            <!-- /.email -->
+                            <div class="phone">
+                                @item.TEL_NO
+                            </div>
+                            <!-- /.phone -->
+                        </div>
+                        <!-- /.agency -->
+                    }
+                </div>
+                <!-- /.content -->
+
+            </div>
+        </div>
+        <!-- /#sidebar -->
+
+        <div id="main" class="span9 property-listing">
+            <div class="clearfix">
+                <script type="text/javascript">
+                    $().ready(function () {
+                        $('select[name=filter_sort_by]').change(function () {
+                            $('form.form-sort').submit();
+                        });
+
+                        $('select[name=filter_order]').change(function () {
+                            $('form.form-sort').submit();
+                        });
+                    });
+                </script>
+
+                <div class="properties-rows">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="property span9">
+                                <div class="row">
+                                    <div class="span3">
+                                        <div class="image">
+                                            <div class="content">
+                                                <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">
+                                                    <img width="570" height="425" src="@item.TBLRESIM.FirstOrDefault().RESIM_YOLU" class="thumbnail-image" alt="@item.TBLRESIM.FirstOrDefault().ALT_ETIKETI">
+                                                </a>
+                                            </div>
+                                            <!-- /.content -->
+                                        </div>
+                                        <!-- /.image -->
+                                    </div>
+
+                                    <div class="body span6">
+                                        <div class="title-price row">
+                                            <div class="title span6">
+                                                <h2>
+                                                    <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO">@item.ILAN_BASLIGI</a>
+                                                </h2>
+                                            </div>
+                                            <!-- /.title -->
+
+                                            <div class="price">
+                                                @string.Format("{0:C}", item.FIYAT)
+                                            </div>
+                                            <!-- /.price -->
+                                        </div>
+                                        <!-- /.title -->
+
+
+                                        <div class="location">
+                                            @item.KONUMU
+                                        </div>
+                                        <!-- /.location -->
+
+                                        <div class="body">
+                                            <p>
+                                                @item.ILAN_ICERIGI
+                                            </p>
+                                        </div>
+                                        <!-- /.body -->
+
+                                        <div class="property-info clearfix">
+                                            <div class="area">
+                                                <i class="icon icon-normal-cursor-scale-up"></i>
+                                                @item.M2 m<sup>2</sup>  &nbsp; @item.ODA_SAYISI
+                                            </div>
+                                            <!-- /.area -->
+                                            <div class="more-info">
+                                                <a href="/Anasayfa/EmlakDetay/@item.ILAN_NO" class="btn btn-primary" style="color:white">Detaylar<i class="icon icon-normal-right-arrow-circle"></i></a>
+                                            </div>
+                                        </div>
+                                        <!-- /.info -->
+                                    </div>
+                                    <!-- /.body -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.property -->
+                        }
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.properties-grid -->
+
+
+                <div class="pagination pagination-centered">
+                    @Html.PagedListPager(Model, sayfa => Url.Action("EmlakFiltrele", new { sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>
+
+            </div>
+            <!-- /#main -->
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+    $('input').click(function (e) {
+        if ($('#ilkFiyat').val() == "" || $('#sonFiyat').val() == "") {
+            e.preventDefault();
+            alert('Lütfen değer giriniz');
+        }
+    });
+</script>

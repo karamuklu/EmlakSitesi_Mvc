@@ -1,0 +1,45 @@
+@mixin shadow {
+  @include box-shadow(0px 1px 2px rgba(0, 0, 0, .2));
+  //-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#d6d6d6')";
+}
+
+@mixin primary-color-opacity($color, $opacity: 0.3) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
+@function primary-button-border($color, $opacity: 0.3) {
+  @return rgba($color, $opacity);
+}
+
+@mixin primary-button {
+  @include  transition(0.2s); @include box-shadow(0px 0px 0px 2px primary-button-border($color-primary, 0.2)); background-color: $color-primary; background-image: none; border-radius: 3px; border: none; color: #fff; font-size: 14px; margin-bottom: 20px; margin-top: 15px; padding: 6px 10px 6px 10px; text-shadow: none; text-align: center; width: 80%;
+  &:hover { @include box-shadow(0px 0px 0px 2px primary-button-border($color-primary, 0.5)); }
+}
+
+.btn.btn-primary {
+	@include  transition(0.2s); @include box-shadow(0px 0px 0px 2px primary-button-border($color-primary, 0.2)); background-color: $color-primary; background-image: none; border-radius: 3px; border: none; color: #fff; font-size: 14px; margin-bottom: 20px; margin-top: 15px; padding: 6px 10px 6px 10px; text-shadow: none; text-align: center;
+	&:hover { @include box-shadow(0px 0px 0px 2px primary-button-border($color-primary, 0.5)); }
+}
+
+@mixin secondary-button {
+  @include box-shadow(0px 0px 0px 2px primary-button-border($color-secondary, 0.2)); background-color: $color-secondary; background-image: none; border-radius: 3px; border: none; color: #fff; margin-bottom: 20px; margin-top: 15px; padding: 6px 0px 6px 0px; text-shadow: none; text-align: center; width: 80%;
+  &:hover { @include box-shadow(0px 0px 0px 2px primary-button-border($color-secondary, 0.5)); }
+}
+
+@mixin white-button {
+  @include transition(0.2s); @include shadow; background-color: #fff; background-image: none; border-radius: 3px; border: 1px solid rgba(0,0,0,0.2); color: $color-dark-gray; margin-bottom: 10px; margin-top: 10px; padding: 3px 5px 3px 5px; text-shadow: none; text-align: center; width: 80%;
+  &:hover { background-color: $color-light-gray; }
+}
+
+@mixin set-input{ @include transition(0.2s); padding-left: 15px; padding-right: 15px; }
+
+@mixin footer-h2 {
+  background-color: transparent; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; margin-bottom: 20px; padding-top: 5px; padding-bottom: 20px;
+}
+
+@mixin picto-pro { -webkit-font-smoothing: antialiased; font-family: 'PictoPro-Normal'; speak: none; font-weight: normal; font-variant: normal; line-height: 1; text-transform: none; }
+
+@mixin social-icons { @include transition(0.2s); @include box-sizing(border-box); background-color: #fff; border-radius: 50%; border: 2px solid $color-primary; height: 25px; margin-left: 5px; margin-top: 3px; width: 25px; opacity: .3;
+  &:hover { opacity: 1 }
+}

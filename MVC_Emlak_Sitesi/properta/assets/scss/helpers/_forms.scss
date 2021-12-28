@@ -1,0 +1,44 @@
+.chzn-container { font-size: 14px; width: 100%;
+  .chzn-single { @include shadow; background-color: #fff; background-image: none; border: 1px solid rgba(0, 0, 0, .2); border-radius: 3px; line-height: 35px; height: 35px;
+    div { width: 30px; border-left: 1px solid rgba(0,0,0,0.1);
+      b { @include transition(0.2s); background-image: url("../../assets/img/down-arrow.png") !important; background-repeat: no-repeat !important; background-position: center center !important; background-size: 8px 6px !important; width: 100%; height: 100%; display: block; }
+    }
+    &:hover {
+      b { background-color: $color-light-gray; border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+    }
+  }
+  .chzn-drop { @include shadow; border: 1px solid rgba(0, 0, 0, .1); border-top: none; margin-top: -2px;
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background-color: transparent; margin-left: 10px;  }
+    ::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.2); border-radius: 3px;
+      &:hover { background-color: rgba(0,0,0,0.4); }
+    }
+    ::-webkit-scrollbar-button { display: none; }
+    ::-webkit-scrollbar-corner { display: none; }
+
+    .chzn-results { margin-top: 2px;
+      li { @include transition(0.2s); line-height: 20px; margin-right: 5px;
+        &:hover {background-color: $color-primary; background-image: none; border-radius: 3px; color: #fff; }
+      }
+      .result-selected { background-color: $color-primary; background-image: none; border-radius: 3px; color: #fff; }
+    }
+  }
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, .uneditable-input, #inputDate {
+  @include box-sizing(border-box); @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .2)); border: none; border-radius: 2px; display: block; height: 30px; margin-bottom: 3px; margin-top: 5px;
+  &:focus { @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .4));  }
+  &:hover { @include box-shadow(0px 0px 0px 1px rgba(0, 0, 0, .4));  }
+}
+
+.widget {
+	input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, .uneditable-input, #inputDate { width: 100%; }
+}
+textarea { height: auto; }
+//.tab-content .form-actions .btn { padding-left: 8px; padding-right: 8px; }
+
+@media (min-width: 1199px) {
+  padding-left: 20px; padding-right: 20px;
+  input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, .uneditable-input, #inputDate { height: 35px; margin-bottom: 5px; margin-top: 10px; }
+}
+

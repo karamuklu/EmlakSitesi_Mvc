@@ -1,0 +1,28 @@
+//.properties-grid {
+//  &.featured {
+//    .property{ background-color: $color-primary; margin-bottom: 0px; position: relative;
+//      .image { float: left; margin: 10px; width: 30%; }
+//      .wrapper{ margin-bottom: 10px;
+//        .title{
+//          h3 { font-size: 12px; font-weight: bold; line-height: 1; margin: 12px 10px 0px 0px;
+//            a { color: $color-primary; }
+//          }
+//        }
+//        .location { color: $color-dark-gray; font-size: 12px; margin-bottom: 4px;}
+//        .price { @include shadow; color: $color-dark-gray; background-color: #fff; border-radius: 2px; display: inline; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; }
+//      }
+//    }
+//    @media (min-width: 1199px) {
+//      .property {
+//        .image { float: left; margin: 10px; width: 100px; }
+//        .wrapper { margin-bottom: 20px;
+//          .title {
+//            h3 { font-size: 14px; }
+//          }
+//          .location { color: $color-dark-gray; font-size: 12px; margin-bottom: 8px;}
+//          .price {  font-size: 14px; font-weight: bold; padding: 6px 10px 6px 10px; }
+//        }
+//      }
+//    }
+//  }
+//}

@@ -1,0 +1,481 @@
+.widget { background-color: $color-light-gray;
+  form { margin: 0px; }
+  h2 { background-color: white; color: $color-primary; font-size: 14px; font-weight: normal; line-height: 1; margin: 15px 0 5px 0; padding-bottom: 10px; }
+  ul { list-style: none; margin: 0px;
+    li {  //padding: 0px 0 5px 10px;
+      a { color: $color-link; }
+    }
+  }
+  label { background-color: #fff; color: $color-primary; font-size: 18px; }
+  .btn { @include primary-button; }
+  .post-date { color: $color-medium-gray; font-size: 12px; }
+  .form-actions { background-color: transparent; border: none; margin: 0px; padding: 0 0 0px 0; }
+  @media (min-width: 1199px) {
+    h2 { font-size: 18px; }
+    .btn { @include primary-button; }
+  }
+
+  .sub-menu {
+    ul{
+      li { padding-left: 10px; padding-bottom: 0px;
+        ul {  }
+      }
+    }
+  }
+  .recentcomments {
+    .url { font-weight: bold; }
+  }
+
+  &.properties, &.our-agents, &.login, &.register, &.widget_search, &.widget_recent_entries, &.widget_recent_comments,
+  &.widget_archive, &.widget_categories, &.widget_meta, &.widget_pages, &.widget_tag_cloud, &.widget_calendar,
+  &.widget_nav_menu, &.enquire, &.widget_rss, &.dsidx-widget-list-areas, &.dsidx-widget-listings, &.partners, &.agencies
+  { background-color: transparent; border: none;}
+
+  &.widget_recent_entries, &.widget_recent_comments, &.widget_archive, &.widget_categories, &.widget_meta, &.widget_pages, &.widget_calendar, &.widget_rss, &.dsidx-widget-list-areas,
+  &.dsidx-widget-listings, &.agencies {
+    ul { @include shadow; background-color: $color-light-gray; padding: 10px 10px 5px 10px;
+      li { border-bottom: 1px solid #fff; margin-bottom: 5px; padding-bottom: 5px;
+        .post-date { border-bottom: 0px solid #fff; display: block; font-size: 11px; margin-right: 10px; }
+        &:last-child {
+          .post-date { border-bottom: 0px;}
+        }
+        &:last-child { border-bottom: 0px;}
+      }
+    }
+  }
+  @media (min-width: 1199px) {
+    &.widget_recent_entries, &.widget_recent_comments, &.widget_archive, &.widget_categories, &.widget_meta, &.widget_pages, &.widget_calendar {
+      ul { padding: 15px 20px 5px 20px; }
+    }
+  }
+
+  &.widget_pages {
+    ul {
+      li {
+        ul { box-shadow: none; }
+      }
+    }
+  }
+
+  &.widget_nav_menu {
+    ul { @include shadow; background-color: $color-light-gray; padding: 3px 4px 2px 0px;
+      li { padding-left: 0px !important; margin-top: 5px; border-bottom: 0px !important;
+        ul { box-shadow: none; }
+      }
+    }
+    .menu {
+      ul {
+        li { padding-left: 0px; padding-bottom: 0px;
+          a { @include opacity(.6); font-weight: normal; padding-bottom: 5px;  }
+          ul {
+            li {
+            a { color: $color-dark-gray; font-size: 12px; line-height: 14px; }
+            }
+          }
+        }
+      }
+      a { color: $color-primary; display: block; font-weight: normal; margin-right: 10px; padding-bottom: 5px;
+        &:last-child { border-bottom: 0px; }
+      }
+    }
+  }
+  @media (min-width: 1199px) {
+    &.widget_nav_menu {
+      ul { padding: 5px 8px 4px;
+        li { padding-left: 10px; }
+      }
+    }
+  }
+
+  &.widget_tag_cloud {
+    .tagcloud { @include shadow; background-color: $color-light-gray; padding: 5px 8px 4px; }
+  }
+  &.widget_calendar {
+    #calendar_wrap { @include shadow; background-color: $color-light-gray; padding: 5px 10px 10px 10px;
+      #wp-calendar {
+        width: 100%; text-align: center;
+        caption { color: $color-primary; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+        tr {
+          th { background-color: #fff; border-bottom: 1px solid rgba(0,0,0,0.05); color: $color-primary;}
+          td {
+            &:hover { color: $color-medium-gray; cursor: default; }
+          }
+        }
+        #today { background-color: $color-primary; border-radius: 3px; color: #fff; }
+        a { color: $color-secondary; }
+      }
+    }
+  }
+  &.enquire {
+    .content {@include shadow;  background-color: $color-primary; text-align: center;
+      .btn { @include secondary-button; }
+      form { @include set-input;
+        label { color: #fff; font-size: 14px; font-weight: bold; background-color: transparent; margin-bottom: 0px; padding-top: 10px; text-align: left;  }
+      }
+      .form-actions { background-color: transparent; border: none; margin: 0px; padding: 0px; }
+      input[type="submit"] { margin-bottom: 0px; }
+      .control-group { margin-bottom: 0px; }
+      #inputDate { padding-bottom: 6px; padding-top: 6px; }
+      #inputMessage { min-height: 100px; }
+    }
+    @media (min-width: 1199px) {
+      .content {
+        .btn { @include secondary-button; }
+      }
+    }
+  }
+
+	&.property-carousel { background-color: #fff;
+		h2 { border-bottom: 0px; }
+	}
+
+  &.property-filter { @include shadow; background-color: $color-light-gray; margin: 0px !important; padding: 15px 20px 0px 20px;
+		@media (max-width: 767px) {
+			margin: 0px 20px;
+		}
+    .control-label {  background-color: transparent; color: $color-dark-gray; font-size: 14px; font-weight: bold; }
+    .rent, .sale { display: inline-block; margin-bottom: 5px;  margin-top: 5px; width: 50%; }
+    .rent { float: left; }
+    .sale { float: right; }
+		.checkbox { padding-left: 0px; }
+
+    label { background-color: transparent; color: $color-dark-gray; font-size: 14px; font-weight: bold; }
+    .form-actions { text-align: center;
+      .btn { @include primary-button; }
+    }
+    select { width: 100%; }
+    .beds {
+      &.control-group { clear: left; float: left; width: 48%;
+        .controls {
+          select { width: 100%; }
+          .chzn-container { @include box-sizing(border-box); width: 100% !important; }
+        }
+      }
+    }
+
+    .baths {
+      &.control-group { clear: right; float: right; width: 48%;
+        .controls {
+          select { width: 100%; }
+          .chzn-container { @include box-sizing(border-box); width: 100% !important; }
+        }
+      }
+    }
+
+		&.filter-horizontal { position: relative;
+			.content {  bottom: 0px; background-color: $color-primary; position: absolute; left: 0; padding: 25px 0; width: 100%;
+				form {  padding: 0px 20px;
+					.bx-wrapper { @include shadow(); background-color: #fff; left: 0px; max-width: inherit !important; position: absolute; top: -80px; z-index: 1;
+						.property-types {
+
+							.property-type { @include transition(background-color .2s); background-repeat: no-repeat; background-position: 15% 50%; border-right: 1px solid $color-light-gray; height: 38px; padding: 15px; position: relative; width: 38px;
+								&:before { @include transition(opacity .2s); @include opacity(0); @include picto-pro; color: $color-secondary; content: "\e12b"; font-size: 20px; left: 14px; top: 8px; position: absolute; }
+								&:after { @include opacity(.5); @include transition(background-color .6s); @include transition(opacity .2s linear); background-color: $color-medium-gray; border-radius: 50%; color: $color-medium-gray; content: ""; display: block; height: 32px; margin-left: 9px; top: 18px; position: absolute; width: 32px; z-index: -1; }
+								&:hover {  background-color: rgba(0,0,0,0.05); cursor: pointer;
+									&:after { @include opacity(.8); }
+								}
+
+								label { @include transition(opacity .2s); @include opacity(.5); color: $color-dark-gray; font-weight: normal; margin-top: 9px; margin-left: 35px; }
+
+								&.active {
+									&:before { @include opacity(1); }
+									&:after { @include opacity(1); background-color: $color-primary; }
+									label { @include opacity(1); }
+								}							
+
+                background-image: url('../img/property-types/family-house.png'); background-size: 38px 38px;
+                @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+                  background-image: url('../img/property-types/family-house@2x.png');
+                }
+
+								&.condo { background-image: url('../img/property-types/condo.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/condo@2x.png');
+									}
+								}
+
+								&.cottage { background-image: url('../img/property-types/cottage.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/cottage@2x.png');
+									}
+								}
+								&.building-area { background-image: url('../img/property-types/building-area.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/building-area@2x.png');
+									}
+								}
+								&.family-house { background-image: url('../img/property-types/family-house.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/family-house@2x.png');
+									}
+								}
+								&.single-home { background-image: url('../img/property-types/single-home.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/single-home@2x.png');
+									}
+								}
+								&.villa { background-image: url('../img/property-types/villa.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/villa@2x.png');
+									}
+								}
+								&.apartment { background-image: url('../img/property-types/apartment.png'); background-size: 38px 38px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url('../img/property-types/apartment@2x.png');
+									}
+								}
+
+								input { visibility: hidden; }
+							}
+						}
+						.bx-controls-direction {
+							a {
+								&.bx-next { background-image: url(../img/property-types-controls-next.png); background-position: center center; background-repeat: no-repeat; background-size: 26px 26px; opacity: 1; right: -8px; width: 26px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url(../img/property-types-controls-next@2x.png);
+									}
+								}
+								&.bx-prev { left: -9px; background-image: url(../img/property-types-controls-prev.png); background-position: center center; background-repeat: no-repeat; background-size: 26px 26px; opacity: 1; width: 26px;
+									@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+										background-image: url(../img/property-types-controls-prev@2x.png);
+									}
+								}
+							}
+						}
+					}
+				}
+
+                input[type=text] { display: inline-block; height: 35px; margin: 1px 0px 0px 0px; width: 100px; }
+
+				select { float: left; width: auto;
+					&.location { width: 140px;}
+					&.type { width: 140px;}
+					&.beds {width: 110px }
+					&.baths {width: 110px }
+					&.price-from {width: 120px }
+					&.price-to {width: 120px }
+
+					@media (min-width: 768px) and (max-width: 979px) {
+						&.location { width: 110px; }
+						&.type { width: 110px; }
+						&.price-from { width: 110px; }
+						&.price-to { width: 110px; }
+						&.beds { width: 90px; }
+						&.baths { width: 90px; }
+					}
+				}
+
+				@media (max-width: 767px) {
+					.chzn-container { margin-bottom: 10px; float: left; width: 48% !important;
+						&#inputBeds__chzn { float: right !important; }
+						&#inputPriceFrom__chzn { float: right !important; }
+						&#inputPriceTo__chzn { margin-bottom: 0px; }
+					}
+
+					.btn { float: right !important; margin-bottom: 0px; padding-left: 0px !important; padding-right: 0px !important; width: 48% !important; }
+				}
+
+				.btn { @include secondary-button; float:right; padding: 8px 50px; width: auto; margin: 0;
+					@media (min-width: 768px) and (max-width: 979px) {
+						padding: 8px 30px;
+					}
+				}
+			}
+		}
+  }
+
+  &.widget_search { margin-top: 20px;
+    form { @include set-input; margin: 0px 0px 20px 0; }
+    .content { @include shadow; background-color: $color-light-gray; padding-top: 10px; text-align: center;}
+    h2 { padding-bottom: 5px; }
+    &:first-child { margin-top: 15px;
+      h2 { margin-bottom: 10px; }
+    }
+  }
+  &.properties {
+    .image { position: relative;
+			a:after { @include transition(opacity .2s linear); background-color: $color-primary; content: ''; display: block; height: 100%; position: absolute; opacity: 0; right: 0px; top: 0px; z-index: 999; width: 100%; }
+			a:before { @include transition(opacity .2s linear); color: #fff; content: '\e099'; display: block; font-family: 'PictoPro-Normal'; font-size: 20px; height: 20px; position: absolute; opacity: 0; text-align: center; margin-right: -10px; margin-top: -10px; right: 50%; top: 50%; width: 20px; z-index: 1000; }
+      a:hover {
+        &:after { @include opacity(.5); }
+				&:before { @include opacity(.99); }
+      }
+    }
+  }
+
+  &.agencies {
+    .agency { position: relative; font-size: 12px; border-bottom: 1px solid $color-light-gray; margin-bottom: 10px; padding-bottom: 10px; width: 100%;
+      .info{
+        h2 { display: inline; font-size: 14px; font-weight: bold; margin: 0; padding-bottom: 5px;}
+      }
+      .number { font-size: 12px; }
+      .image { @include shadow; width: 70px; float: left; margin-right: 10px;  }
+      .btn { @include white-button; width: auto; margin: 3px 0; }
+      .address { margin-bottom: 5px; margin-left: 30px; margin-top: 10px;
+        &:before { @include picto-pro; color: $color-secondary; content: "\e063";  font-size: 20px; position: absolute; left: 0; }
+      }
+      .email { margin-bottom: 5px; margin-left: 30px;
+        &:before { @include picto-pro; color: $color-secondary; content: "\e095";  font-size: 20px;  position: absolute; left: 0; }
+      }
+      .phone { margin-left: 30px;
+        &:before { @include picto-pro; color: $color-secondary; content: "\e06a";  font-size: 20px;  position: absolute; left: 0; }
+      }
+      .url { margin-left: 30px;
+        &:before { @include picto-pro; color: $color-secondary; content: "\e0c5";  font-size: 20px;  position: absolute; left: 0; }
+      }
+    }
+  }
+
+  &.partners {
+    .partner { margin-bottom: 20px;
+    }
+  }
+}
+
+.widget_text { background-color: transparent; border-bottom: 1px solid $color-light-gray;
+  .content-box { margin-top: 30px;  padding-bottom: 30px;
+    .pictopro-icon { @include box-sizing(border-box); background-image: none; border: 2px solid $color-medium-gray; border-radius: 50%; height: 70px;
+      .icon { color: $color-primary; font-size: 48px; margin-left: 9px; margin-top: 8px; }
+
+			@media (min-width: 979px) and (max-width: 1199px) {
+				height: 60px;
+				.icon { background-image: none; background-position: -9999px; display: block; font-size: 42px; height: 56px; line-height: 56px; margin: 0px; text-align: center; width: 56px; }
+			}
+
+			@media (min-width: 768px) and (max-width: 979px) {
+				height: 42px;
+				.icon { background-image: none; background-position: -9999px; display: block; font-size: 30px; height: 38px; line-height: 38px; margin: 0px; text-align: center; width: 38px; }
+			}
+
+			@media (max-width: 768px) {
+				display: none;
+			}
+    }
+    .content { color: $color-medium-gray; line-height: 20px;
+      h3 { color: $color-primary; font-size: 18px; font-weight: normal; line-height: 24px;
+				@media (min-width: 768px) and (max-width: 979px) {
+					font-size: 14px; line-height: 18px;
+				}
+			}
+			@media (min-width: 768px) and (max-width: 979px) {
+				p { font-size: 12px; line-height: 16px; }
+			}
+      a { color: $color-dark-gray;
+        i { color: $color-medium-gray; font-size: 20px; line-height: 15px; margin-left: 5px; text-decoration: none; }
+      }
+    }
+  }
+}
+
+
+
+.property { @include shadow; background-color: $color-light-gray; margin-bottom: 0px; position: relative; padding: 10px;
+  .image { float: left; margin-right: 10px; width: 30%; background-color: $color-primary; }
+  .wrapper{ margin-bottom: 5px;
+    .title{
+      h3 { font-size: 12px; font-weight: bold; line-height: 1; margin: 0;
+        a { color: $color-primary; }
+      }
+    }
+    .location { color: $color-dark-gray; font-size: 12px; margin-bottom: 4px;}
+    .price { @include shadow; color: $color-dark-gray; background-color: #fff; border-radius: 2px; display: inline; font-size: 12px; font-weight: bold; padding: 4px 8px 4px 8px; }
+  }
+}
+@media (min-width: 1199px) {
+  .property {
+    .image { float: left; width: 100px; }
+    .wrapper { margin-bottom: 5px;
+      .title {
+        h3 { font-size: 14px; }
+      }
+    .location { color: $color-dark-gray; font-size: 12px; margin-bottom: 8px;}
+    .price {  font-size: 14px; font-weight: bold; padding: 6px 10px 6px 10px; }
+    }
+  }
+}
+
+.property-info { @include shadow; background-color: #fff; font-size: 12px; padding: 2px 10px 2px 5px; margin-bottom: 10px; z-index: 0;
+  .area { float: left; }
+  .bedrooms { float: right; }
+  .bathrooms { float: right; }
+  .icon { color: $color-medium-gray; font-size: 16px; line-height: 15px; margin-right: 5px; margin-left: 5px }
+}
+
+@media (min-width: 1199px) {
+  .property-info { font-size: 12px; padding: 6px 10px 5px 5px;
+    .icon { color: $color-medium-gray; font-size: 20px; line-height: 13px; margin-right: 5px; margin-left: 5px }
+  }
+}
+
+.our-agents {
+  .content {
+    .agent { border-bottom: 1px solid $color-light-gray; line-height: 12px; margin-bottom: 10px; padding-bottom: 10px;
+      &:last-child { margin-bottom: 0px; }
+      .image { float: left; margin-right: 10px; width: 50px; }
+      .name { margin-bottom: 5px;
+        a { color: $color-primary; font-size: 12px; font-weight: bold; }
+      }
+      .phone, .email { font-size: 12px;
+      a { color: $color-dark-gray; text-decoration: underline; }
+      }
+      .icon { color: $color-secondary; font-size: 12px; margin-right: 0px; }
+    }
+  }
+}
+@media (min-width: 1199px) {
+  .our-agents {
+    .content {
+      .agent { line-height: 20px; margin-bottom: 20px; padding-bottom: 20px;
+        .image { width: 70px; }
+        .name { margin-bottom: 5px;
+          a { font-size: 14px; }
+        }
+        .icon { color: $color-secondary; font-size: 15px; margin-right: 5px; }
+      }
+    }
+  }
+}
+
+.login {
+  .content {@include shadow; background-color: $color-light-gray; text-align: center;
+    form { @include set-input;
+      label { color: $color-dark-gray; font-size: 14px; font-weight: bold; background-color: transparent; margin-bottom: 0px; padding-top: 10px; text-align: left;  }
+    }
+    .control-group { margin-bottom: 0px; }
+  }
+}
+
+.register {
+  .content {@include shadow;  background-color: $color-light-gray; text-align: center;
+    form { @include set-input;
+      label { color: $color-dark-gray; font-size: 14px; font-weight: bold; background-color: transparent; margin-bottom: 0px; padding-top: 10px; text-align: left;  }
+    }
+    //.form-actions { background-color: transparent; border: none; margin: 0px; padding: 0 0 10px 0; }
+    //.btn { background-color: red; }
+    //input[type="submit"] { @include primary-button(100px); margin-bottom: 0px; }
+    .control-group { margin-bottom: 0px; }
+  }
+}
+
+
+.sidebar {
+	.property-filter {
+		.chzn-container { width: 100% !important; }
+	}
+}
+
+.widget {
+	.carousel {
+		.bx-wrapper .bx-prev { background-image: url('../img/controls-prev.png') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 25px 25px !important;
+			@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+				background-image: url('../img/controls-prev@2x.png') !important;
+			}
+		}
+
+		.bx-wrapper .bx-next { background-image: url('../img/controls-next.png') !important; background-position: center center !important; background-repeat: no-repeat !important; background-size: 25px 25px !important;
+			@media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+				background-image: url('../img/controls-next@2x.png') !important;
+			}
+		}
+	}
+}
